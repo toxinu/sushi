@@ -69,12 +69,12 @@ And for file rendering:
     <td>{{ name }}</td><td>Your app name</td>
   </tr>
   <tr>
-    <td>{{ module }}</td><td>Your app name formated to be module</td>
+    <td>{{ module }}</td><td>Your app name formated to be a valid module</td>
   </tr>
   <tr>
-    <td>{{ license }}</td><td>Your favorite license (according to <a href="http://licenses.opendefinition.org/licenses/groups/all.json">OpenDefinition</a></td>
+    <td>{{ license }}</td><td>Your favorite license (according to <a href="http://licenses.opendefinition.org/licenses/groups/all.json">OpenDefinition</a>)</td>
   </tr>
-  	<td>{{ license_content }}</td><td>Url to favorite license</td>
+  	<td>{{ license_content }}</td><td>Url to your favorite license</td>
   <tr>
     <td>{{ username }}</td><td>Operating system username</td><
   </tr>
@@ -107,7 +107,7 @@ And for file rendering:
   </tr>
 </table>
 
-And every value you add to your configuration file under ``settings`` section.
+And every values you can add to your configuration file under ``settings`` section.
 
 License
 -------
