@@ -1,4 +1,10 @@
 Sushi
 =====
 
-Python packages bundler
+Description
+-----------
+
+Template
+--------
+
+```
