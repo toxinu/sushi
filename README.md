@@ -27,15 +27,6 @@ sushi list
 ```bash
 sushi init my_package
  :: Unbundle your project
-    - .gitignore
-    - info.json
-    - README.md
-    - setup.py
-    - __init__.py
-    - cli.py
-    - core.py
-    - logger.py
-    - __app__
  :: Run modules
     -> license
     -> git

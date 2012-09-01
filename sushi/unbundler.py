@@ -28,7 +28,7 @@ def unbundle(template, dst):
 				continue
 			if f == '__app__':
 				dst_file = os.path.join(dst_path, env['name'])
-			logger.info('    - %s' % f)
+			#logger.info('    - %s' % f)
 			try:
 				with open(dst_file, 'w') as r:
 					r.write(render(os.path.join(path, f), **env))
