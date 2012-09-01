@@ -2,9 +2,9 @@
 
 ## Presentation
 
-Sushi is a modular Python bundler. But it's goal is not to give you the perfect template but to create your own. 
+Sushi is a modular Python bundler. But it's goal is not to give you the perfect template cause I don't it but it's to create your own. 
 
-It's easy to add module like auto ``git init`` (already in sushi) and more.
+Sushi add an easy to add module like auto ``git init`` (already in sushi) and more.
 
 ### Installation
 
@@ -116,6 +116,7 @@ Todo
 ----
 
 * Improve cli with more option, like --template
+* Better extension system
 * Maybe create webservice for template hosting ?
 
 License
