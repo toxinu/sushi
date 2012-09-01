@@ -29,12 +29,12 @@ class Cli(object):
 			run_modules(template, path)
 		elif self.args.get('add', False):
 			path = self.args.get('<path>')
-			logger.info(' :: Add %s into sushi packages' % path)
+			logger.info(' :: Add %s into sushi templates' % path)
 			manager = TemplatesManager()
 			manager.add(path)
 		elif self.args.get('del', False):
 			name = self.args.get('<name>')
-			logger.info(' :: Delete %s from sushi packages' % name)
+			logger.info(' :: Delete %s from sushi templates' % name)
 			manager = TemplatesManager()
 			manager.delete(name)
 		elif self.args.get('list', False):
@@ -43,7 +43,7 @@ class Cli(object):
 			if not templates:
 				logger.info(' :: No templates installed')
 				sys.exit(1)
-			logger.info(' :: All packages')
+			logger.info(' :: All templates')
 			for template in templates:
 				if template == conf.get('settings', 'template'):
 					logger.info('    - %s (default)' % template)

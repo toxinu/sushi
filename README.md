@@ -12,7 +12,7 @@ pip install git+http://github.com/Socketubs/Sushi.git
 
 ### Default template
 
-Download my template example
+Download my template example.  
 You can have many template has you want.
 
 ```bash
