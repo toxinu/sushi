@@ -58,13 +58,13 @@ default
 └── setup.py
 ```
 
-There is just one keyword to know for filename:
+There is just one keyword to know for filename: ``__app__`` will be replace by your formatted module name.
 
 And for file rendering:
 
 <table>
   <tr>
-    <th>Keywork</th><th>Value</th>
+    <th>Keyword</th><th>Value</th>
   </tr>
   <tr>
     <td>{{ name }}</td><td>Your app name</td>
