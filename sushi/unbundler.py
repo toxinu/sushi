@@ -23,15 +23,17 @@ def unbundle(template, dst):
 
 		dst_path = path.replace(template_dir, dst)
 		for f in files:
+			dst_file = os.path.join(dst_path, f)
 			if f in conf.get('settings', 'ignore').split():
 				continue
-			logger.info(' - %s' % f)
-			logger.debug(' - %s (%s)(%s)' % (f, path, dst_path))
+			if f == '__app__':
+				dst_file = os.path.join(dst_path, env['name'])
+			logger.info('    - %s' % f)
 			try:
-				with open(os.path.join(dst_path, f), 'w') as r:
+				with open(dst_file, 'w') as r:
 					r.write(render(os.path.join(path, f), **env))
 			except Exception as err:
-				logger.info('   | Failed for %s (%s)' % (f, err))
+				logger.info('      | Failed for %s (%s)' % (f, err))
 
 	for (path, dirs, files) in os.walk(dst):
 		for d in dirs:
@@ -43,8 +45,9 @@ def unbundle(template, dst):
 def run_modules(template, dst):
 	for module in conf.get('settings', 'modules').split():
 		try:
-			logger.info(module)
-			m = __import__('sushi.extra.%s' % module)
+			logger.info('    -> %s' % module)
+			m = __import__('sushi.ext.%s' % module)
+			m = sys.modules['sushi.ext.%s' % module]
 			m.run(dst)
 		except Exception as err:
 			logger.info(' :: Module %s not found (%s)' % (module, err))

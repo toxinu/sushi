@@ -5,4 +5,6 @@ __title__ = '{{ name }}'
 __version__ = '0.1'
 __author__ = '{{ username }}'
 __license__ = '{{ license }}'
-__copyright__ = 'Copyright {{ year }} {{ username }}'
+__copyright__ = 'Copyright {{ year }} {{ firstname }} {{ lastname }}'
+
+import core

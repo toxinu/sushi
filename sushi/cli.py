@@ -23,7 +23,9 @@ class Cli(object):
 			template = self.args.get('--template', False)
 			if not template:
 				template = conf.get('settings', 'template', 'default')
+			logger.info(' :: Unbundle your project')
 			unbundle(template, path)
+			logger.info(' :: Run modules')
 			run_modules(template, path)
 		elif self.args.get('add', False):
 			path = self.args.get('<path>')
