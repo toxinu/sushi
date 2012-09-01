@@ -40,7 +40,9 @@ Take a look at your configuration file: ```~/.sushi/sushi.conf```.
 ## Create your own template
 
 This is a tree sample of template:
-```default
+
+```bash
+default
 ├── .DS_Store
 ├── .gitignore
 ├── README.md
@@ -52,7 +54,8 @@ This is a tree sample of template:
 │   └── logger.py
 ├── bin
 │   └── __app__
-└── setup.py```
+└── setup.py
+```
 
 There is just one keyword to know for filename:
 
