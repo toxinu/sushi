@@ -4,6 +4,8 @@
 
 Sushi is a modular Python bundler. But it's goal is not to give you the perfect template but to create your own. 
 
+It's easy to add module like auto ``git init`` (already in sushi) and more.
+
 ### Installation
 
 ```bash
