@@ -2,4 +2,4 @@
 # coding: utf-8
 import os
 
-from {{ name }}.logger import logger
+from {{ name }}.logger import stream_logger
