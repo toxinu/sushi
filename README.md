@@ -1,30 +1,31 @@
-Sushi
-=====
+# Sushi
 
-Description
------------
+## Presentation
 
 Sushi is a modular Python bundler.  
 Use [Jinja2][1] for file rendering.
 
-Short preview
--------------
 
-Install :
+### Installation
 
-```pip install git+http://github.com/Socketubs/Sushi.git```
+```bash
+pip install git+http://github.com/Socketubs/Sushi.git
+```
 
-Download example template :
+### Default template
 
-```wget https://github.com/Socketubs/Sushi/raw/master/templates/default.tar.gz
+```bash
+wget https://github.com/Socketubs/Sushi/raw/master/templates/default.tar.gz
 sushi add default.tar.gz
 sushi list
  :: All packages
-    - default (default)```
+    - default (default)
+```
 
-Create your package :
+### First package
 
-```sushi init my_package
+```bash
+sushi init my_package
  :: Unbundle your project
     - .gitignore
     - info.json
@@ -38,15 +39,14 @@ Create your package :
  :: Run modules
     -> license
     -> git
-Initialized empty Git repository in /Users/socketubs/Downloads/Tests/panda/my_package/.git/```
+Initialized empty Git repository in /Users/socketubs/Downloads/Tests/panda/my_package/.git/
+```
 
-Configuration
--------------
+## Configuration
 
 Take a look at your configuration file: ```~/.sushi/sushi.conf```.
 
-Create your own template
-------------------------
+## Create your own template
 
 This is a tree sample of template:
 ```default
@@ -115,5 +115,11 @@ And for file rendering:
 
 And every value you add to your configuration file under ``settings`` section.
 
+License
+-------
+
+License is [AGPL3][2]. See [LICENSE][3].
 
 [1]: http://jinja.pocoo.org
+[2]: http://www.gnu.org/licenses/agpl.html
+[3]: https://raw.github.com/Socketubs/Sushi/master/LICENSE
