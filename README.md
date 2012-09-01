@@ -2,9 +2,7 @@
 
 ## Presentation
 
-Sushi is a modular Python bundler.  
-Use [Jinja2][1] for file rendering.
-
+Sushi is a modular Python bundler. But it's goal is not to give you the perfect template but to create your own. 
 
 ### Installation
 
@@ -13,6 +11,9 @@ pip install git+http://github.com/Socketubs/Sushi.git
 ```
 
 ### Default template
+
+Download my template example
+You can have many template has you want.
 
 ```bash
 wget https://github.com/Socketubs/Sushi/raw/master/templates/default.tar.gz
@@ -108,6 +109,12 @@ And for file rendering:
 </table>
 
 And every values you can add to your configuration file under ``settings`` section.
+
+Todo
+----
+
+* Improve cli with more option, like --template
+* Maybe create webservice for template hosting ?
 
 License
 -------
