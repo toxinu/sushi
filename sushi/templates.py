@@ -24,7 +24,7 @@ class TemplatesManager(object):
 		if tarfile.is_tarfile(src):
 			tar.extractall(dst)
 		else:
-			raise Exception('Archive invalid (not a tarfile)')
+			raise Exception('Archive invalid (not a gzipped tarfile)')
 
 	def delete(self, name):
 		dst = os.path.join(conf.get('paths', 'sushi_templates'), name)
