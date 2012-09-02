@@ -3,8 +3,8 @@
 
 from jinja2 import Template
 
-def render(template, **kwargs):
-	t = Template(open(template).read())
+def render(recipe, **kwargs):
+	t = Template(open(recipe).read())
 	return t.render(**kwargs)
 
 def confirm(prompt=None, resp=False):

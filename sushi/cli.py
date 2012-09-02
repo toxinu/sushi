@@ -2,11 +2,12 @@
 # coding: utf-8
 
 import sys
+import os
 
 from sushi.core import logger
 from sushi.core import conf
 
-from sushi.templates import TemplatesManager
+from sushi.recipes import RecipesManager
 from sushi.unbundler import unbundle
 from sushi.unbundler import run_modules
 from sushi.starter import Starter
@@ -24,7 +25,7 @@ class Cli(object):
 	def start(self):
 
 		###################
-		# starte          #
+		# starter         #
 		###################
 		starter = Starter()
 		if starter.check():
@@ -36,40 +37,42 @@ class Cli(object):
 		###################
 		# init            #
 		###################
-		if self.args.get('init', False):
+		if self.args.get('craft', False):
+			logger.info(' :: Craft your project')
 			path = self.args.get('<path>')
-			template = self.args.get('--template', False)
-			if not template:
-				template = conf.get('settings', 'template', 'default')
-			logger.info(' :: Unbundle your project')
-			logger.info(' :: Template: %s' % template)
+			recipe = self.args.get('--recipe', False)
+			if not recipe:
+				recipe = conf.get('settings', 'recipe', 'default')
+			logger.info('    -> Recipe: %s' % recipe)
 			try:
-				unbundle(template, path)
+				unbundle(recipe, path)
 			except Exception as err:
 				logger.error('Error: %s' % err)
 				sys.exit(1)
 			logger.info(' :: Run modules')
-			run_modules(template, path)
+			run_modules(recipe, path)
+			logger.info(' :: Done')
 		###################
-		# add             #
+		# learn           #
 		###################
-		elif self.args.get('add', False):
+		elif self.args.get('learn', False):
 			path = self.args.get('<path>')
-			logger.info(' :: Add %s into sushi templates' % path)
-			manager = TemplatesManager()
+			logger.info(' :: Learn %s recipes' % os.path.basename(path))
+			manager = RecipesManager()
 			try:
 				manager.add(path)
 			except Exception as err:
 				logger.error('Error: %s' % err)
 				sys.exit(1)
+			logger.info(' :: Done')
 		###################
-		# del             #
+		# forget          #
 		###################
-		elif self.args.get('del', False):
+		elif self.args.get('forget', False):
 			name = self.args.get('<name>')
-			logger.info(' :: Delete %s from sushi templates' % name)
+			logger.info(' :: Forget %s recipes' % name)
 			if confirm():
-				manager = TemplatesManager()
+				manager = RecipesManager()
 				try:
 					manager.delete(name)
 					logger.info(' :: Done')
@@ -79,21 +82,22 @@ class Cli(object):
 			else:
 				print('Abort.')
 				sys.exit(1)
+			logger.info(' :: Done')
 		###################
-		# list            #
+		# cookbook        #
 		###################
-		elif self.args.get('list', False):
-			manager = TemplatesManager()
-			templates = manager.list()
-			if not templates:
-				logger.info(' :: No templates installed')
+		elif self.args.get('cookbook', False):
+			manager = RecipesManager()
+			recipes = manager.list()
+			if not recipes:
+				logger.info(' :: No recipes learned')
 				sys.exit(1)
-			logger.info(' :: All templates')
-			for template in templates:
-				if template == conf.get('settings', 'template'):
-					logger.info('    - %s (default)' % template)
+			logger.info(' :: Recipes')
+			for recipe in recipes:
+				if recipe == conf.get('settings', 'recipe'):
+					logger.info('    -> %s (default)' % recipe)
 				else:
-					logger.info('    - %s' % template)
+					logger.info('    -> %s' % recipe)
 		###################
 		# licenses        #
 		###################

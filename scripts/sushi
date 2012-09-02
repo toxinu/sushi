@@ -10,15 +10,15 @@ from sushi.cli import Cli
 doc = """Sushi is a mininal python bundler.
 
 Usage:
-  sushi init <path> [--template=<name>]
-  sushi add <path>
-  sushi del <name>
-  sushi (list|licenses)
+  sushi craft <path> [--recipe=<name>]
+  sushi learn <path>
+  sushi forget <name>
+  sushi cookbook
   sushi -h | --help
   sushi -v | --version
 
 Options:
-  --template=<name>   Select template
+  --recipe=<name>     Select recipe
   -h --help           Show help
   -v --version        Show version
 """

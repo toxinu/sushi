@@ -8,24 +8,24 @@ from sushi.core import conf
 from sushi.core import logger
 from sushi.tools import render
 from sushi.env import get_env
-from sushi.templates import TemplatesManager
+from sushi.recipes import RecipesManager
 
 from sushi.exceptions import *
 
-def unbundle(template, dst):
-	manager = TemplatesManager()
-	template_dir = manager.get(template)
+def unbundle(recipe, dst):
+	manager = RecipesManager()
+	recipe_dir = manager.get(recipe)
 
 	env = get_env(dst)
 
 	if os.path.exists(dst):
 		raise UnbundlerException('Destination (%s) already exist' % dst)
 	os.makedirs(dst)
-	for (path, dirs, files) in os.walk(template_dir):
+	for (path, dirs, files) in os.walk(recipe_dir):
 		for d in dirs:
 			os.makedirs(os.path.join(dst, d))
 
-		dst_path = path.replace(template_dir, dst)
+		dst_path = path.replace(recipe_dir, dst)
 		for f in files:
 			dst_file = os.path.join(dst_path, f)
 			if f in conf.get('settings', 'ignore').split():
@@ -45,7 +45,7 @@ def unbundle(template, dst):
 				dst = os.path.join(path, env['module'])
 				os.rename(src, dst)
 
-def run_modules(template, dst):
+def run_modules(recipe, dst):
 	for module in conf.get('settings', 'modules').split():
 		try:
 			logger.info('    -> %s' % module)
