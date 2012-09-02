@@ -53,7 +53,7 @@ class Cli(object):
 			except Exception as err:
 				logger.info('Error: %s' % err)
 				sys.exit(1)
-			logger.info(' :: Run modules')
+			logger.info(' :: Call helpers')
 			run_modules(recipe, path)
 			logger.info(' :: Done')
 		###################
