@@ -9,6 +9,7 @@ CHANGELOG
 * Add --template option on init
 * Add default and advanced examples in templates dir
 * Released on pypi
+* New extension system
 
 0.1
 ---

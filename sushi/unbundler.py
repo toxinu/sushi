@@ -49,8 +49,8 @@ def run_modules(recipe, dst):
 	for module in conf.get('settings', 'modules').split():
 		try:
 			logger.info('    -> %s' % module)
-			m = __import__('sushi.ext.%s' % module)
-			m = sys.modules['sushi.ext.%s' % module]
+			m = __import__('sushi_ext_%s' % module)
+			m = sys.modules['sushi_ext_%s' % module]
 			m.run(dst)
 		except Exception as err:
 			logger.info(' :: Module %s not found (%s)' % (module, err))
