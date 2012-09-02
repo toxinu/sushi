@@ -17,7 +17,7 @@ pip install sushi
 First time you will run sushi, a starter will ask you if you want to download default template.
 You can have many template has you want.
 
-```bash
+```
 sushi list
  :: I think it's your first time with sushi
  :: Can I import default template for you ?
