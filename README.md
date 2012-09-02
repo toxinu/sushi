@@ -32,6 +32,7 @@ Confirm [y|N]: y
 ### First sushi
 
 ```bash
+sushi craft my_sushi
  :: Craft your project
     -> Recipe: maki
  :: Call helpers
