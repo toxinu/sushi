@@ -14,19 +14,19 @@ if sys.argv[-1] == 'publish':
 	sys.exit()
 
 setup(
-	name='sushi',
-	version='0.2',
-	description='Python package bundler',
-	long_description=open('README.md').read(), 
-	license=open("LICENSE").read(),
-	author="Geoffrey Lehee",
-	author_email="geoffrey@lehee.name",
-	url='https://github.com/socketubs/Sushi/',
-	keywords="sushi package python linux",
-	packages = ['sushi', 'sushi.ext'],
-	scripts=['scripts/sushi'],
-	install_requires=['jinja2==2.6', 'docopt==0.5.0', 'requests==0.13.8', 'licenses==0.6.1'],
-	classifiers=(
+	name			= '{{ name }}',
+	version			= '0.1',
+	description 	= '## Set description',
+	long_description= open('README.md').read(), 
+	license 		= open('LICENSE').read(),
+	author 			= '{{ username }}',
+	author_email 	= '{{ email }}',
+	url 			= '## Set url',
+	keywords 		= '## Set keywords',
+	packages 		= ['{{ name }}'],
+	scripts 		= ['bin/{{ name }}'],
+	install_requires= ['docopt==0.5.0'],
+	classifiers		= (
 		'Intended Audience :: Developers',
 		'Natural Language :: English',
 		'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',

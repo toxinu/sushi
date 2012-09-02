@@ -9,6 +9,10 @@ from sushi.core import conf
 from sushi.templates import TemplatesManager
 from sushi.unbundler import unbundle
 from sushi.unbundler import run_modules
+from sushi.starter import Starter
+from sushi.tools import confirm
+
+from sushi.exceptions import *
 
 from licenses import Licenses
 
@@ -18,25 +22,66 @@ class Cli(object):
 		logger.disabled = False
 	
 	def start(self):
+
+		###################
+		# starte          #
+		###################
+		starter = Starter()
+		if starter.check():
+			if confirm():
+				starter.run()
+			else:
+				print('Abort.')
+
+		###################
+		# init            #
+		###################
 		if self.args.get('init', False):
-			path = self.args.get('<name>')
+			path = self.args.get('<path>')
 			template = self.args.get('--template', False)
 			if not template:
 				template = conf.get('settings', 'template', 'default')
 			logger.info(' :: Unbundle your project')
-			unbundle(template, path)
+			logger.info(' :: Template: %s' % template)
+			try:
+				unbundle(template, path)
+			except Exception as err:
+				logger.error('Error: %s' % err)
+				sys.exit(1)
 			logger.info(' :: Run modules')
 			run_modules(template, path)
+		###################
+		# add             #
+		###################
 		elif self.args.get('add', False):
 			path = self.args.get('<path>')
 			logger.info(' :: Add %s into sushi templates' % path)
 			manager = TemplatesManager()
-			manager.add(path)
+			try:
+				manager.add(path)
+			except Exception as err:
+				logger.error('Error: %s' % err)
+				sys.exit(1)
+		###################
+		# del             #
+		###################
 		elif self.args.get('del', False):
 			name = self.args.get('<name>')
 			logger.info(' :: Delete %s from sushi templates' % name)
-			manager = TemplatesManager()
-			manager.delete(name)
+			if confirm():
+				manager = TemplatesManager()
+				try:
+					manager.delete(name)
+					logger.info(' :: Done')
+				except Exception as err:
+					logger.error('Error: %s' % err)
+					sys.exit(1)
+			else:
+				print('Abort.')
+				sys.exit(1)
+		###################
+		# list            #
+		###################
 		elif self.args.get('list', False):
 			manager = TemplatesManager()
 			templates = manager.list()
@@ -49,6 +94,9 @@ class Cli(object):
 					logger.info('    - %s (default)' % template)
 				else:
 					logger.info('    - %s' % template)
+		###################
+		# licenses        #
+		###################
 		elif self.args.get('licenses', False):
 			licenses = Licenses()
 			for license in licenses:

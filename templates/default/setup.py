@@ -9,10 +9,6 @@ try:
 except ImportError:
 	from distutils.core import setup
 
-if sys.argv[-1] == 'publish':
-	os.system('python setup.py sdist upload')
-	sys.exit()
-
 setup(
 	name			= '{{ name }}',
 	version			= '0.1',
@@ -24,8 +20,7 @@ setup(
 	url 			= '## Set url',
 	keywords 		= '## Set keywords',
 	packages 		= ['{{ name }}'],
-	scripts 		= ['bin/{{ name }}'],
-	install_requires= ['docopt==0.5.0'],
+	install_requires= [],
 	classifiers		= (
 		'Intended Audience :: Developers',
 		'Natural Language :: English',

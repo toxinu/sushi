@@ -7,10 +7,10 @@ import sushi
 from docopt import docopt
 from sushi.cli import Cli
 
-doc = """sushi, mininal python bundler.
+doc = """Sushi is a mininal python bundler.
 
 Usage:
-  sushi init <name>
+  sushi init <path> [--template=<name>]
   sushi add <path>
   sushi del <name>
   sushi (list|licenses)
@@ -18,8 +18,9 @@ Usage:
   sushi -v | --version
 
 Options:
-  -h --help        Show help
-  -v --version     Show version
+  --template=<name>   Select template
+  -h --help           Show help
+  -v --version        Show version
 """
 
 if __name__ == '__main__':

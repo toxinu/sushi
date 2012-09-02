@@ -8,14 +8,18 @@ from sushi.core import conf
 from sushi.core import logger
 from sushi.tools import render
 from sushi.env import get_env
+from sushi.templates import TemplatesManager
+
+from sushi.exceptions import *
 
 def unbundle(template, dst):
+	manager = TemplatesManager()
+	template_dir = manager.get(template)
+
 	env = get_env(dst)
-	template_dir = os.path.join(conf.get('paths', 'sushi_templates'), template)
 
 	if os.path.exists(dst):
-		logger.info(' :: Destination (%s) already exist' % dst)
-		sys.exit(1)
+		raise UnbundlerException('Destination (%s) already exist' % dst)
 	os.makedirs(dst)
 	for (path, dirs, files) in os.walk(template_dir):
 		for d in dirs:
@@ -28,7 +32,6 @@ def unbundle(template, dst):
 				continue
 			if f == '__app__':
 				dst_file = os.path.join(dst_path, env['name'])
-			#logger.info('    - %s' % f)
 			try:
 				with open(dst_file, 'w') as r:
 					r.write(render(os.path.join(path, f), **env))

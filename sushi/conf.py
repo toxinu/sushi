@@ -11,6 +11,8 @@ default_conf = """[settings]
 template = default
 license  = agpl-v3
 ignore   = .DS_Store
+
+# git module is also available
 modules  = license"""
 
 def get_conf():
