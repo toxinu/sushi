@@ -19,7 +19,7 @@ setup(
 	author_email 	= '{{ email }}',
 	url 			= '## Set url',
 	keywords 		= '## Set keywords',
-	packages 		= ['{{ name }}'],
+	packages 		= ['{{ module }}'],
 	install_requires= [],
 	classifiers		= (
 		'Intended Audience :: Developers',
