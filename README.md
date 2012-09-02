@@ -4,7 +4,7 @@
 
 Sushi is a special Python package cookchef. But it's goal is not to give you the perfect recipe cause it don't know it but it's to create your own favorite set of recipes. 
 
-Sushi support helper(extensions) and there are easy to create. See [wiki][1]. There are already some extension, like ``git``, ``license``.
+Sushi support helper(extensions) and there are easy to create. See [website][1]. There are already some extension, like ``git``, ``license``.
 
 ### Installation
 
@@ -62,8 +62,8 @@ License
 
 License is [AGPL3][4]. See [LICENSE][5].
 
-[1]: https://github.com/Socketubs/Sushi/wiki
-[2]: https://github.com/Socketubs/Sushi/wiki/Recipes
-[3]: https://github.com/Socketubs/Sushi/wiki/Helpers
+[1]: http://sushi.socketubs.net/
+[2]: http://sushi.socketubs.net/recipes
+[3]: http://sushi.socketubs.net/helpers
 [4]: http://www.gnu.org/licenses/agpl.html
 [5]: https://raw.github.com/Socketubs/Sushi/master/LICENSE
