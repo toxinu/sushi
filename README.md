@@ -9,19 +9,23 @@ Sushi add an easy to add module like auto ``git init`` (already in sushi) and mo
 ### Installation
 
 ```bash
-pip install git+http://github.com/Socketubs/Sushi.git
+pip install sushi
 ```
 
 ### Default template
 
-Download my template example.  
+First time you will run sushi, a starter will ask you if you want to download default template.
 You can have many template has you want.
 
 ```bash
-wget https://github.com/Socketubs/Sushi/raw/master/templates/default.tar.gz
-sushi add default.tar.gz
 sushi list
- :: All packages
+ :: I think it's your first time with sushi
+ :: Can I import default template for you ?
+Confirm [y|N]: y
+ :: Downloading
+ :: Extracting
+ :: Done
+ :: All templates
     - default (default)
 ```
 
@@ -32,8 +36,6 @@ sushi init my_package
  :: Unbundle your project
  :: Run modules
     -> license
-    -> git
-Initialized empty Git repository in /Users/socketubs/Downloads/Tests/panda/my_package/.git/
 ```
 
 ## Configuration
@@ -42,7 +44,7 @@ Take a look at your configuration file: ```~/.sushi/sushi.conf```.
 
 ## Create your own template
 
-This is a tree sample of template:
+This is a tree sample of my advanced template:
 
 ```bash
 default
@@ -59,6 +61,8 @@ default
 │   └── __app__
 └── setup.py
 ```
+
+You can find it [here][4].
 
 There is just one keyword to know for filename: ``__app__`` will be replace by your formatted module name.
 
@@ -115,7 +119,6 @@ And every values you can add to your configuration file under ``settings`` secti
 Todo
 ----
 
-* Improve cli with more option, like --template
 * Better extension system
 * Maybe create webservice for template hosting ?
 
@@ -127,3 +130,4 @@ License is [AGPL3][2]. See [LICENSE][3].
 [1]: http://jinja.pocoo.org
 [2]: http://www.gnu.org/licenses/agpl.html
 [3]: https://raw.github.com/Socketubs/Sushi/master/LICENSE
+[4]: https://github.com/Socketubs/Sushi/raw/master/templates/advanced.tar.gz
