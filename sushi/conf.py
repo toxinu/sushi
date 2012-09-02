@@ -13,7 +13,7 @@ license  = agpl-v3
 ignore   = .DS_Store
 
 # git helper is also available
-helper  = license"""
+helpers  = license"""
 
 def get_conf():
 	# Create paths
