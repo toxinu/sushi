@@ -7,7 +7,7 @@ import sushi
 from docopt import docopt
 from sushi.cli import Cli
 
-doc = """Sushi is a mininal python bundler.
+doc = """Sushi, a special Python package cookchef.
 
 Usage:
   sushi craft <path> [--recipe=<name>]
