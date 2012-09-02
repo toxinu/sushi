@@ -46,11 +46,11 @@ Take a look at your configuration file: ```~/.sushi/sushi.conf```.
 
 ## Create your own recipe
 
-Cookchef guide about how to create your own [here][4].
+Cookchef guide about how to create your own [here][2].
 
 ## Create your own helpers
 
-Cookchef guide to about how to create your own [here][5].
+Cookchef guide to about how to create your own [here][3].
 
 Todo
 ----
@@ -60,7 +60,7 @@ Todo
 License
 -------
 
-License is [AGPL3][2]. See [LICENSE][3].
+License is [AGPL3][4]. See [LICENSE][5].
 
 [1]: https://github.com/Socketubs/Sushi/wiki
 [2]: https://github.com/Socketubs/Sushi/wiki/Recipes
