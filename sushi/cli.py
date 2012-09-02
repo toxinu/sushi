@@ -30,7 +30,11 @@ class Cli(object):
 		starter = Starter()
 		if starter.check():
 			if confirm():
-				starter.run()
+				try:
+					starter.run()
+				except Exception as err:
+					logger.info(err)
+					sys.exit(1)
 			else:
 				print('Abort.')
 
@@ -47,7 +51,7 @@ class Cli(object):
 			try:
 				unbundle(recipe, path)
 			except Exception as err:
-				logger.error('Error: %s' % err)
+				logger.info('Error: %s' % err)
 				sys.exit(1)
 			logger.info(' :: Run modules')
 			run_modules(recipe, path)

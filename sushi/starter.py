@@ -10,6 +10,8 @@ from sushi.core import conf
 from sushi.recipes import RecipesManager
 from sushi.tools import confirm
 
+from sushi.exceptions import *
+
 class Starter(object):
 	def __init__(self):
 		self.manager = RecipesManager()
@@ -24,9 +26,12 @@ class Starter(object):
 	def run(self):
 		url = 'https://github.com/Socketubs/Sushi/raw/master/recipes/maki.tar.gz'
 
-		logger.info(' :: Downloading')
+		logger.info(' :: Searching')
 		r = requests.get(url, prefetch=False)
-		r.raise_for_status()
+		try:
+			r.raise_for_status()
+		except Exception as err:
+			raise StarterException("Sorry I can't find this old recipe in my cookbook. Try later. (%s)" % err)
 
 		src = os.path.join(conf.get('paths', 'sushi_recipes'), 'maki.tar.gz')
 		dst = conf.get('paths', 'sushi_recipes')
@@ -36,7 +41,7 @@ class Starter(object):
 				if buf:
 					f.write(buf)
 
-		logger.info(' :: Extracting')
+		logger.info(' :: Teaching')
 		# Open tarfile
 		tar = tarfile.open(src, 'r:gz')
 		if tarfile.is_tarfile(src):

@@ -19,3 +19,13 @@ class UnbundlerError(UnbundlerException):
 		self.parameter = value
 	def __str__(self):
 		return repr(self.parameter)
+
+# Starter
+class StarterException(RuntimeError):
+	""" Starter Error """
+
+class StarterError(StarterException):
+	def __init__(self, value):
+		self.parameter = value
+	def __str__(self):
+		return repr(self.parameter)
