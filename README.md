@@ -34,6 +34,7 @@ Confirm [y|N]: y
 ```bash
 sushi init my_package
  :: Unbundle your project
+ :: Template: default
  :: Run modules
     -> license
 ```
