@@ -12,8 +12,8 @@ recipe   = maki
 license  = agpl-v3
 ignore   = .DS_Store
 
-# git module is also available
-modules  = license"""
+# git helper is also available
+helper  = license"""
 
 def get_conf():
 	# Create paths
@@ -47,7 +47,7 @@ def get_conf():
 		parser.set('settings', 'recipe', 'default')
 	if not parser.has_option('settings', 'ignore'):
 		parser.set('settings', 'ignore', '.DS_Store')
-	if not parser.has_option('settings', 'modules'):
-		parser.set('settings', 'modules', '')
+	if not parser.has_option('settings', 'helpers'):
+		parser.set('settings', 'helperes', '')
 
 	return parser

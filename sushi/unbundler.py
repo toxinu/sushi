@@ -45,12 +45,12 @@ def unbundle(recipe, dst):
 				dst = os.path.join(path, env['module'])
 				os.rename(src, dst)
 
-def run_modules(recipe, dst):
-	for module in conf.get('settings', 'modules').split():
+def run_helpers(recipe, dst):
+	for helper in conf.get('settings', 'helpers').split():
 		try:
-			logger.info('    -> %s' % module)
-			m = __import__('sushi_ext_%s' % module)
-			m = sys.modules['sushi_ext_%s' % module]
+			logger.info('    -> %s' % helper)
+			m = __import__('sushi_ext_%s' % helper)
+			m = sys.modules['sushi_ext_%s' % helper]
 			m.run(dst)
 		except Exception as err:
-			logger.info(' :: Module %s not found (%s)' % (module, err))
+			logger.info(' :: Helper %s not found (%s)' % (helper, err))

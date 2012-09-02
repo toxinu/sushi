@@ -9,7 +9,7 @@ from sushi.core import conf
 
 from sushi.recipes import RecipesManager
 from sushi.unbundler import unbundle
-from sushi.unbundler import run_modules
+from sushi.unbundler import run_helpers
 from sushi.starter import Starter
 from sushi.tools import confirm
 
@@ -54,7 +54,7 @@ class Cli(object):
 				logger.info('Error: %s' % err)
 				sys.exit(1)
 			logger.info(' :: Call helpers')
-			run_modules(recipe, path)
+			run_helpers(recipe, path)
 			logger.info(' :: Done')
 		###################
 		# learn           #
