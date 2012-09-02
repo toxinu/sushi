@@ -23,7 +23,7 @@ setup(
 	author_email="geoffrey@lehee.name",
 	url='https://github.com/socketubs/Sushi/',
 	keywords="sushi package python linux",
-	packages = ['sushi', 'sushi.ext'],
+	packages = ['sushi'],
 	scripts=['scripts/sushi'],
 	install_requires=[	'jinja2==2.6',
 						'docopt==0.5.0',
