@@ -15,7 +15,7 @@ if sys.argv[-1] == 'publish':
 
 setup(
 	name='sushi',
-	version='0.2',
+	version='0.2.1',
 	description='Python package bundler',
 	long_description=open('README.md').read(),
 	license=open("LICENSE").read(),
