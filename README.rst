@@ -57,12 +57,12 @@ Take a look at your configuration file: ``~/.sushi/sushi.conf``.
 Create your own recipe
 ----------------------
 
-Cookchef guide about how to create your own `here`_.
+Cookchef guide about how to create your own `recipes`_.
 
 Create your own helpers
 -----------------------
 
-Cookchef guide to about how to create your own `here`_.
+Cookchef guide to about how to create your own `helpers`_.
 
 Todo
 ----
@@ -75,7 +75,7 @@ License
 License is `AGPL3`_. See `LICENSE`_.
 
 .. _website: http://sushi.socketubs.net/
-.. _here: http://sushi.socketubs.net/recipes
-.. _here: http://sushi.socketubs.net/helpers
+.. _recipes: http://sushi.socketubs.net/recipes
+.. _helpers: http://sushi.socketubs.net/helpers
 .. _AGPL3: http://www.gnu.org/licenses/agpl.html
 .. _LICENSE: https://raw.github.com/Socketubs/Sushi/master/LICENSE
