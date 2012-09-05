@@ -17,7 +17,8 @@ setup(
 	name='sushi',
 	version='0.2.1',
 	description='Python package bundler',
-	long_description=open('README.md').read(),
+	long_description=	open('README.rst').read() + '\n\n' +
+						open('HISTORY.rst').read(),
 	license=open("LICENSE").read(),
 	author="Geoffrey Lehee",
 	author_email="geoffrey@lehee.name",
