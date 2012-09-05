@@ -1,10 +1,10 @@
 # coding: utf-8
 
-# TemplatesManagerException
-class TemplatesManagerException(RuntimeError):
-	""" TemplatesManager Error """
+# RecipesManagerException
+class RecipesManagerException(RuntimeError):
+	""" RecipesManager Error """
 
-class TemplatesManagerError(TemplatesManagerException):
+class RecipesManagerError(RecipesManagerException):
 	def __init__(self, value):
 		self.parameter = value
 	def __str__(self):
