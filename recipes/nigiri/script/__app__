@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+import os
+import {{ module }}
+
+from docopt import docopt
+from {{ module }}.cli import Cli
+
+doc = """{{ name }}, ## Set description.
+
+Usage:
+  {{ module }} -h | --help
+  {{ module }} -v | --version
+
+Options:
+  -h --help           Show help
+  -v --version        Show version
+"""
+
+if __name__ == '__main__':
+	args = docopt(doc, version={{ module }}.__version__)
+	cli = Cli(**args)
+	cli.start()

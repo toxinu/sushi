@@ -17,7 +17,7 @@ setup(
 	name			= '{{ name }}',
 	version			= '0.1',
 	description 	= '## Set description',
-	long_description= open('README.md').read(), 
+	long_description= open('README.rst').read() + '\n\n' + open('HISTORY.rst').read(), 
 	license 		= open('LICENSE').read(),
 	author 			= '{{ username }}',
 	author_email 	= '{{ email }}',
