@@ -1,4 +1,4 @@
-HISTORY
+History
 =======
 
 0.2
