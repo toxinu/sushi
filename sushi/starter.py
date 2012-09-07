@@ -19,12 +19,12 @@ class Starter(object):
 	def check(self):
 		if not self.manager.list():
 			logger.info(" :: I think it's your first time with sushi")
-			logger.info(" :: Can I suggest you simple maki recipe ?")
+			logger.info(" :: Can I suggest you simple basic recipe ?")
 			return True
 		return False
 
 	def run(self):
-		url = 'https://github.com/Socketubs/Sushi/raw/master/recipes/maki.tar.gz'
+		url = 'https://github.com/Socketubs/Sushi/raw/master/recipes/basic.tar.gz'
 
 		logger.info(' :: Searching')
 		r = requests.get(url, prefetch=False)
@@ -33,7 +33,7 @@ class Starter(object):
 		except Exception as err:
 			raise StarterException("Sorry I can't find this old recipe in my cookbook. Try later. (%s)" % err)
 
-		src = os.path.join(conf.get('paths', 'sushi_recipes'), 'maki.tar.gz')
+		src = os.path.join(conf.get('paths', 'sushi_recipes'), 'basic.tar.gz')
 		dst = conf.get('paths', 'sushi_recipes')
 
 		with open(src, 'w') as f:

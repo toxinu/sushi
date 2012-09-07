@@ -8,7 +8,7 @@ from ConfigParser import SafeConfigParser
 from sushi.core import logger
 
 default_conf = """[settings]
-recipe   = maki
+recipe   = basic
 license  = agpl-v3
 ignore   = .DS_Store
 
