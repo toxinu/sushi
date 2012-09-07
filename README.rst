@@ -4,9 +4,14 @@ Sushi
 Presentation
 ------------
 
-Sushi is a special Python package cookchef. But it’s goal is not to give
-you the perfect recipe cause it don’t know it but it’s to create your
-own favorite set of recipes.
+Sushi is Python package builder. Enough to create same package structure everytime. Create custom recipes for Flask, Django, etc...
+
+- Deploy the same everytime
+- Make specific recipe for Flask, Django, ...
+- Use helpers to not waste time
+- Auto ``virtualenv`` for best dev
+- Auto ``git init`` your package
+- And more !
 
 Sushi support helper(extensions) and there are easy to create. See
 `website`_. There are already some extension, like ``git``, ``license``.
@@ -22,31 +27,34 @@ Meet the cookchef
 ~~~~~~~~~~~~~~~~~
 
 First time you will run sushi, your cookchef will ask you if you want to
-learn a basic **maki** recipe. You can learn how many recipes you want
+learn a **basic** recipe. You can learn how many recipes you want
 in your cookbook.
 
 ::
 
     sushi cookbook
      :: I think it's your first time with sushi
-     :: Can I suggest you simple maki recipe ?
+     :: Can I suggest you simple basic recipe ?
     Confirm [y|N]: y
      :: Searching
      :: Teaching
      :: Done
      :: Recipes
-        -> maki (default)
+        -> basic (default)
 
 First sushi
 ~~~~~~~~~~~
 
 ::
 
-    sushi craft my_sushi
+    sushi craft My-Package 
      :: Craft your project
-        -> Recipe: maki
+        -> Recipe: advanced
      :: Call helpers
         -> license
+        -> git
+    Initialized empty Git repository in /Users/socketubs/My-Package/.git/
+        -> virtualenv
      :: Done
 
 Configuration
@@ -63,11 +71,6 @@ Create your own helpers
 -----------------------
 
 Cookchef guide to about how to create your own `helpers`_.
-
-Todo
-----
-
--  Maybe create webservice for template hosting ?
 
 License
 -------
