@@ -28,7 +28,7 @@ setup(
 	scripts=['scripts/sushi'],
 	install_requires=[	'jinja2==2.6',
 						'docopt==0.5.0',
-						'requests==0.13.8',
+						'requests==0.14.0',
 						'sushi-git',
 						'sushi-license'],
 	dependency_links = ['https://github.com/Socketubs/Sushi-git/tarball/master#egg=sushi-git',
