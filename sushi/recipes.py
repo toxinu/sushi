@@ -19,9 +19,9 @@ class RecipesManager(object):
 
 	def add(self, path):
 		if not os.path.isfile(path):
-			raise RecipesManagerException('Template is not gzipped tar file')
+			raise RecipesManagerException('Recipe is not gzipped tar file')
 		if not tarfile.is_tarfile(path):
-			raise RecipesManagerException('Template is not gzipped tar file')
+			raise RecipesManagerException('Recipe is not gzipped tar file')
 		src = path
 		dst = conf.get('paths', 'sushi_recipes')
 
@@ -30,15 +30,15 @@ class RecipesManager(object):
 		if tarfile.is_tarfile(src):
 			tar.extractall(dst)
 		else:
-			raise RecipesManagerException('Template is not gzipped tar file')
+			raise RecipesManagerException('Recipe is not gzipped tar file')
 
 	def delete(self, name):
 		if name not in self.list():
-			raise RecipesManagerException('Template %s not installed' % name)
+			raise RecipesManagerException('Recipe %s not installed' % name)
 		dst = os.path.join(conf.get('paths', 'sushi_recipes'), name)
 		shutil.rmtree(dst)
 
 	def get(self, name):
 		if name not in self.list():
-			raise RecipesManagerException('Template %s not available' % name)
+			raise RecipesManagerException('Recipe %s not available' % name)
 		return os.path.join(conf.get('paths', 'sushi_recipes'), name)

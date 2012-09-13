@@ -61,7 +61,7 @@ class Cli(object):
 		###################
 		elif self.args.get('learn', False):
 			path = self.args.get('<path>')
-			logger.info(' :: Learn %s recipes' % os.path.basename(path))
+			logger.info(' :: Learn %s recipe' % os.path.basename(path))
 			manager = RecipesManager()
 			try:
 				manager.add(path)
@@ -74,7 +74,7 @@ class Cli(object):
 		###################
 		elif self.args.get('forget', False):
 			name = self.args.get('<name>')
-			logger.info(' :: Forget %s recipes' % name)
+			logger.info(' :: Forget %s recipe' % name)
 			if confirm():
 				manager = RecipesManager()
 				try:
@@ -94,7 +94,7 @@ class Cli(object):
 			manager = RecipesManager()
 			recipes = manager.list()
 			if not recipes:
-				logger.info(' :: No recipes learned')
+				logger.info(' :: No recipe learned')
 				sys.exit(1)
 			logger.info(' :: Recipes')
 			for recipe in recipes:
