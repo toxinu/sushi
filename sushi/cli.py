@@ -86,7 +86,6 @@ class Cli(object):
 			else:
 				print('Abort.')
 				sys.exit(1)
-			logger.info(' :: Done')
 		###################
 		# cookbook        #
 		###################
