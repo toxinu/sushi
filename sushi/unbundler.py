@@ -3,6 +3,7 @@
 
 import os
 import sys
+import shutil
 
 from sushi.core import conf
 from sushi.core import logger
@@ -20,30 +21,39 @@ def unbundle(recipe, dst):
 
 	if os.path.exists(dst):
 		raise UnbundlerException('Destination (%s) already exist' % dst)
-	os.makedirs(dst)
-	for (path, dirs, files) in os.walk(recipe_dir):
-		for d in dirs:
-			os.makedirs(os.path.join(dst, d))
 
-		dst_path = path.replace(recipe_dir, dst)
+	##################
+	# Copy every dir #
+	##################
+	def ignore(folder, names):
+		return [n for n in names if
+			not os.path.isdir(os.path.join(folder, n)) and
+			n in conf.get('settings', 'ignore').split()]
+
+	shutil.copytree(recipe_dir, dst, ignore=ignore)
+
+	############################################
+	# Copy every file and render it on the fly #
+	############################################
+	for path, dirs, files in os.walk(recipe_dir):
 		for f in files:
-			dst_file = os.path.join(dst_path, f)
-			if f in conf.get('settings', 'ignore').split():
-				continue
-			if f == '__app__':
-				dst_file = os.path.join(dst_path, env['name'])
+			fdst = os.path.join(path.replace(recipe_dir, dst), f)
 			try:
-				with open(dst_file, 'w') as r:
+				with open(fdst, 'w') as r:
 					r.write(render(os.path.join(path, f), **env))
 			except Exception as err:
 				logger.info('      | Failed for %s (%s)' % (f, err))
 
-	for (path, dirs, files) in os.walk(dst):
-		for d in dirs:
-			if d == '__app__':
-				src = os.path.join(path, d)
-				dst = os.path.join(path, env['module'])
-				os.rename(src, dst)
+	######################################
+	# Rename every __app__ to {{ name }} #
+	######################################
+	for r,s,f in os.walk(dst):
+		# Folders
+		if "__app__" in s:
+			os.rename(os.path.join(r, "__app__"), os.path.join(r, env['name']))
+		# Files
+		if "__app__" in f:
+			os.rename(os.path.join(r, "__app__", os.path.join(r, env['name'])))
 
 def run_helpers(recipe, dst):
 	for helper in conf.get('settings', 'helpers').split():
