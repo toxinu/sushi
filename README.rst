@@ -1,9 +1,6 @@
 Sushi
 =====
 
-Presentation
-------------
-
 Sushi is Python package builder. Enough to create same package structure everytime. Create custom recipes for Flask, Django, etc...
 
 - Deploy the same everytime
@@ -14,6 +11,9 @@ Sushi is Python package builder. Enough to create same package structure everyti
 - And more !
 
 Sushi support helper(extensions) and there are easy to create. There are already some extension, like ``git``, ``license``.
+
+Quick start
+-----------
 
 Installation
 ~~~~~~~~~~~~
@@ -68,7 +68,7 @@ structure but with ``Jinja2`` code inside your files.
 How to
 ~~~~~~
 
-This is a tree sample of my ** `advanced <https://github.com/Socketubs/Sushi/tree/master/recipes/advanced>`_ ** recipe:
+This is a tree sample of my `advanced <https://github.com/Socketubs/Sushi/tree/master/recipes/advanced>`_ recipe:
 
 ::
 
@@ -85,7 +85,7 @@ This is a tree sample of my ** `advanced <https://github.com/Socketubs/Sushi/tre
     │   └── __app__
     └── setup.py
 
-Take a quicklook of this ** `recipes <https://github.com/Socketubs/Sushi/tree/master/recipes/advanced>`_ ** files.
+Take a quicklook of this `recipes <https://github.com/Socketubs/Sushi/tree/master/recipes/advanced>`_ files.
 
 There is just one keyword to know for filename: ``__app__`` will be
 replace by your formatted module name.
@@ -114,7 +114,8 @@ Keyword                Value
 
 And every values you can add to your configuration file under
 ``settings`` section.
- By the way, Sushi use **`Jinja2 <http://jinja.pocoo.org>`_** for rendering.
+
+By the way, Sushi use `Jinja2 <http://jinja.pocoo.org>`_ for rendering.
 
 Create your own helpers
 -----------------------
