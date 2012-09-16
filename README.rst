@@ -95,7 +95,6 @@ And for file rendering:
 =====================  =============
 Keyword                Value 
 ---------------------  -------------
-=====================  =============
 {{ name }}             Your app name 
 {{ module }}           Your app name formated to be a valid module 
 {{ license }}          Your favorite license (according to `OpenDefinition <http://licenses.opendefinition.org/licenses/groups/all.json>`_) 
