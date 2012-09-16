@@ -68,7 +68,7 @@ structure but with ``Jinja2`` code inside your files.
 How to
 ~~~~~~
 
-This is a tree sample of my **`advanced <https://github.com/Socketubs/Sushi/tree/master/recipes/advanced>`_** recipe:
+This is a tree sample of my ** `advanced <https://github.com/Socketubs/Sushi/tree/master/recipes/advanced>`_ ** recipe:
 
 ::
 
@@ -85,58 +85,32 @@ This is a tree sample of my **`advanced <https://github.com/Socketubs/Sushi/tree
     │   └── __app__
     └── setup.py
 
-Take a quicklook of this **`recipes <https://github.com/Socketubs/Sushi/tree/master/recipes/advanced>`_** files.
+Take a quicklook of this ** `recipes <https://github.com/Socketubs/Sushi/tree/master/recipes/advanced>`_ ** files.
 
 There is just one keyword to know for filename: ``__app__`` will be
 replace by your formatted module name.
 
 And for file rendering:
 
-<table>
-    <tr>
-      <th>Keyword</th><th>Value</th>
-    </tr>
-    <tr>
-      <td>{{ name }}</td><td>Your app name</td>
-    </tr>
-    <tr>
-      <td>{{ module }}</td><td>Your app name formated to be a valid module</td>
-    </tr>
-    <tr>
-      <td>{{ license }}</td><td>Your favorite license (according to <a href="http://licenses.opendefinition.org/licenses/groups/all.json">OpenDefinition</a>)</td>
-    </tr>
-      <td>{{ license_content }}</td><td>Url to your favorite license</td>
-    <tr>
-      <td>{{ username }}</td><td>Operating system username</td>
-    </tr>
-    <tr>
-      <td>{{ firstname }}</td><td>Your firstname</td>
-    </tr>
-    <tr>
-      <td>{{ lastname }}</td><td>Your lastname</td>
-    </tr>
-    <tr>
-      <td>{{ year }}</td><td>Now year</td>
-    </tr>
-    <tr>
-      <td>{{ day }}</td><td>Now day</td>
-    </tr>
-    <tr>
-      <td>{{ month }}</td><td>Now month</td>
-    </tr>
-    <tr>
-      <td>{{ hour }}</td><td>Now hour</td>
-    </tr>
-    <tr>
-      <td>{{ minute }}</td><td>Now minute</td>
-    </tr>
-    <tr>
-      <td>{{ second }}</td><td>Now second</td>
-    </tr>
-    <tr>
-      <td>{{ date }}</td><td>Now date (2012-09-01 16:55)</td>
-    </tr>
-</table>
+=====================  =============
+Keyword                Value 
+---------------------  -------------
+=====================  =============
+{{ name }}             Your app name 
+{{ module }}           Your app name formated to be a valid module 
+{{ license }}          Your favorite license (according to `OpenDefinition <http://licenses.opendefinition.org/licenses/groups/all.json>`_) 
+{{ license_content }}  Url to favorite license 
+{{ username }}         Operating system username
+{{ firstname }}        Your firstname
+{{ lastname }}         Your lastname
+{{ year }}             Year
+{{ day }}              Day
+{{ month }}            Month
+{{ hour }}             Hour
+{{ minute }}           Minute
+{{ second }}           Second
+{{ date }}             Date (2012-09-01 16:55)
+=====================  =============
 
 And every values you can add to your configuration file under
 ``settings`` section.
