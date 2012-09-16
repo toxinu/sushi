@@ -92,171 +92,51 @@ replace by your formatted module name.
 
 And for file rendering:
 
-.. raw:: html
-
-   <table class="table table-bordered">
-
-.. raw:: html
-
-   <thead>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <th>
-
-Keyword
-
-.. raw:: html
-
-   </th>
-
-.. raw:: html
-
-   <th>
-
-Value
-
-.. raw:: html
-
-   </th>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   </thead>
-
-.. raw:: html
-
-   <tbody>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{{ name }}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Your app name
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{{ module }}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Your app name formated to be a valid module
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{{ license }}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Your favorite license (according to `OpenDefinition <http://licenses.opendefinition.org/licenses/groups/all.json>`_)
-
-        <table>
-            <tr>
-              <th>Keyword</th><th>Value</th>
-            </tr>
-            <tr>
-              <td>{{ name }}</td><td>Your app name</td>
-            </tr>
-            <tr>
-              <td>{{ module }}</td><td>Your app name formated to be a valid module</td>
-            </tr>
-            <tr>
-              <td>{{ license }}</td><td>Your favorite license (according to <a href="http://licenses.opendefinition.org/licenses/groups/all.json">OpenDefinition</a>)</td>
-            </tr>
-              <td>{{ license_content }}</td><td>Url to your favorite license</td>
-            <tr>
-              <td>{{ username }}</td><td>Operating system username</td>
-            </tr>
-            <tr>
-              <td>{{ firstname }}</td><td>Your firstname</td>
-            </tr>
-            <tr>
-              <td>{{ lastname }}</td><td>Your lastname</td>
-            </tr>
-            <tr>
-              <td>{{ year }}</td><td>Now year</td>
-            </tr>
-            <tr>
-              <td>{{ day }}</td><td>Now day</td>
-            </tr>
-            <tr>
-              <td>{{ month }}</td><td>Now month</td>
-            </tr>
-            <tr>
-              <td>{{ hour }}</td><td>Now hour</td>
-            </tr>
-            <tr>
-              <td>{{ minute }}</td><td>Now minute</td>
-            </tr>
-            <tr>
-              <td>{{ second }}</td><td>Now second</td>
-            </tr>
-            <tr>
-              <td>{{ date }}</td><td>Now date (2012-09-01 16:55)</td>
-            </tr>
-        </table>
+<table>
+    <tr>
+      <th>Keyword</th><th>Value</th>
+    </tr>
+    <tr>
+      <td>{{ name }}</td><td>Your app name</td>
+    </tr>
+    <tr>
+      <td>{{ module }}</td><td>Your app name formated to be a valid module</td>
+    </tr>
+    <tr>
+      <td>{{ license }}</td><td>Your favorite license (according to <a href="http://licenses.opendefinition.org/licenses/groups/all.json">OpenDefinition</a>)</td>
+    </tr>
+      <td>{{ license_content }}</td><td>Url to your favorite license</td>
+    <tr>
+      <td>{{ username }}</td><td>Operating system username</td>
+    </tr>
+    <tr>
+      <td>{{ firstname }}</td><td>Your firstname</td>
+    </tr>
+    <tr>
+      <td>{{ lastname }}</td><td>Your lastname</td>
+    </tr>
+    <tr>
+      <td>{{ year }}</td><td>Now year</td>
+    </tr>
+    <tr>
+      <td>{{ day }}</td><td>Now day</td>
+    </tr>
+    <tr>
+      <td>{{ month }}</td><td>Now month</td>
+    </tr>
+    <tr>
+      <td>{{ hour }}</td><td>Now hour</td>
+    </tr>
+    <tr>
+      <td>{{ minute }}</td><td>Now minute</td>
+    </tr>
+    <tr>
+      <td>{{ second }}</td><td>Now second</td>
+    </tr>
+    <tr>
+      <td>{{ date }}</td><td>Now date (2012-09-01 16:55)</td>
+    </tr>
+</table>
 
 And every values you can add to your configuration file under
 ``settings`` section.
