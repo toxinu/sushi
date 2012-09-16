@@ -27,16 +27,16 @@ class Cli(object):
 		###################
 		# starter         #
 		###################
-		starter = Starter()
-		if starter.check():
-			if confirm():
-				try:
-					starter.run()
-				except Exception as err:
-					logger.info(err)
-					sys.exit(1)
-			else:
-				print('Abort.')
+		# starter = Starter()
+		# if starter.check():
+		# 	if confirm():
+		# 		try:
+		# 			starter.run()
+		# 		except Exception as err:
+		# 			logger.info(err)
+		# 			sys.exit(1)
+		# 	else:
+		# 		print('Abort.')
 
 		###################
 		# init            #
@@ -61,7 +61,7 @@ class Cli(object):
 		###################
 		elif self.args.get('learn', False):
 			path = self.args.get('<path>')
-			logger.info(' :: Learn %s recipe' % os.path.basename(path))
+			logger.info(' :: Learn given recipe')
 			manager = RecipesManager()
 			try:
 				manager.add(path)
