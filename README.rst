@@ -60,13 +60,13 @@ Create your own recipe
 ----------------------
 
 Description
-===========
+~~~~~~~~~~~
 
 Recipes are simple ``.tar.gz`` archives with a basic python package
 structure but with ``Jinja2`` code inside your files.
 
 How to
-======
+~~~~~~
 
 This is a tree sample of my **`advanced <https://github.com/Socketubs/Sushi/tree/master/recipes/advanced>`_** recipe:
 
@@ -144,7 +144,7 @@ Value
 
    <td>
 
-{% raw %}{{ name }}{% endraw %}
+{{ name }}
 
 .. raw:: html
 
@@ -172,7 +172,7 @@ Your app name
 
    <td>
 
-{% raw %}{{ module }}{% endraw %}
+{{ module }}
 
 .. raw:: html
 
@@ -200,7 +200,7 @@ Your app name formated to be a valid module
 
    <td>
 
-{% raw %}{{ license }}{% endraw %}
+{{ license }}
 
 .. raw:: html
 
@@ -212,325 +212,51 @@ Your app name formated to be a valid module
 
 Your favorite license (according to `OpenDefinition <http://licenses.opendefinition.org/licenses/groups/all.json>`_)
 
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <td>
-
-{% raw %}{{ license\_content }}{% endraw %}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Url to your favorite license
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{% raw %}{{ username }}{% endraw %}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Operating system username
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{% raw %}{{ firstname }}{% endraw %}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Your firstname
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{% raw %}{{ lastname }}{% endraw %}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Your lastname
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{% raw %}{{ year }}{% endraw %}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Now year
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{% raw %}{{ day }}{% endraw %}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Now day
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{% raw %}{{ month }}{% endraw %}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Now month
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{% raw %}{{ hour }}{% endraw %}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Now hour
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{% raw %}{{ minute }}{% endraw %}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Now minute
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{% raw %}{{ second }}{% endraw %}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Now second
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   <tr>
-
-.. raw:: html
-
-   <td>
-
-{% raw %}{{ date }}{% endraw %}
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   <td>
-
-Now date (2012-09-01 16:55)
-
-.. raw:: html
-
-   </td>
-
-.. raw:: html
-
-   </tr>
-
-.. raw:: html
-
-   </tbody>
-
-.. raw:: html
-
-   </table>
-
-.. raw:: html
-
-   </p>
+        <table>
+            <tr>
+              <th>Keyword</th><th>Value</th>
+            </tr>
+            <tr>
+              <td>{{ name }}</td><td>Your app name</td>
+            </tr>
+            <tr>
+              <td>{{ module }}</td><td>Your app name formated to be a valid module</td>
+            </tr>
+            <tr>
+              <td>{{ license }}</td><td>Your favorite license (according to <a href="http://licenses.opendefinition.org/licenses/groups/all.json">OpenDefinition</a>)</td>
+            </tr>
+              <td>{{ license_content }}</td><td>Url to your favorite license</td>
+            <tr>
+              <td>{{ username }}</td><td>Operating system username</td>
+            </tr>
+            <tr>
+              <td>{{ firstname }}</td><td>Your firstname</td>
+            </tr>
+            <tr>
+              <td>{{ lastname }}</td><td>Your lastname</td>
+            </tr>
+            <tr>
+              <td>{{ year }}</td><td>Now year</td>
+            </tr>
+            <tr>
+              <td>{{ day }}</td><td>Now day</td>
+            </tr>
+            <tr>
+              <td>{{ month }}</td><td>Now month</td>
+            </tr>
+            <tr>
+              <td>{{ hour }}</td><td>Now hour</td>
+            </tr>
+            <tr>
+              <td>{{ minute }}</td><td>Now minute</td>
+            </tr>
+            <tr>
+              <td>{{ second }}</td><td>Now second</td>
+            </tr>
+            <tr>
+              <td>{{ date }}</td><td>Now date (2012-09-01 16:55)</td>
+            </tr>
+        </table>
 
 And every values you can add to your configuration file under
 ``settings`` section.
@@ -540,13 +266,13 @@ Create your own helpers
 -----------------------
 
 Description
-===========
+~~~~~~~~~~~
 
 Helpers are Sushi extensions, they will be run **after** complete
 rendering of your recipes.
 
 How to
-======
+~~~~~~
 
 You module name must be ``sushi_ext_name`` and it will be call like that
 ``sushi_ext_name.run(dst)``, wich ``dst`` is the path where recipe will
@@ -579,7 +305,7 @@ And of course ``conf`` object is ``ConfigParser``, so you can ask your
 helper users to set variables in their configuration file.
 
 Examples
-========
+~~~~~~~~
 
 There is one sushi recipe for helper that you can found `here <https://github.com/Socketubs/Sushi/raw/master/recipes/helper.tar.gz>`_.
 
