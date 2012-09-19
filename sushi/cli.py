@@ -27,7 +27,6 @@ class Cli(object):
 		###################
 		# starter         #
 		###################
-<<<<<<< HEAD
 #		starter = Starter()
 #		if starter.check():
 #			if confirm():
@@ -38,18 +37,6 @@ class Cli(object):
 #					sys.exit(1)
 #			else:
 #				print('Abort.')
-=======
-		# starter = Starter()
-		# if starter.check():
-		# 	if confirm():
-		# 		try:
-		# 			starter.run()
-		# 		except Exception as err:
-		# 			logger.info(err)
-		# 			sys.exit(1)
-		# 	else:
-		# 		print('Abort.')
->>>>>>> 48c7bf85612eb4f574c35939ae28d5f8548883d3
 
 		###################
 		# init            #
