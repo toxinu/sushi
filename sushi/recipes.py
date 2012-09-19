@@ -34,7 +34,9 @@ class RecipesManager(object):
 			src = f.name
 			logger.info('    -> Download file')
 			f = open(src, 'w')
-			data = requests.get(url).content
+			r = requests.get(url)
+			r.raise_for_status()
+			data = r.content
 			f.write(data)
 			f.close()
 		else:
