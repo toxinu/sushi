@@ -27,16 +27,16 @@ class Cli(object):
 		###################
 		# starter         #
 		###################
-		starter = Starter()
-		if starter.check():
-			if confirm():
-				try:
-					starter.run()
-				except Exception as err:
-					logger.info(err)
-					sys.exit(1)
-			else:
-				print('Abort.')
+#		starter = Starter()
+#		if starter.check():
+#			if confirm():
+#				try:
+#					starter.run()
+#				except Exception as err:
+#					logger.info(err)
+#					sys.exit(1)
+#			else:
+#				print('Abort.')
 
 		###################
 		# init            #
@@ -74,7 +74,7 @@ class Cli(object):
 		###################
 		elif self.args.get('forget', False):
 			name = self.args.get('<name>')
-			logger.info(' :: Forget %s recipes' % name)
+			logger.info(' :: Forget %s recipe' % name)
 			if confirm():
 				manager = RecipesManager()
 				try:
@@ -86,7 +86,6 @@ class Cli(object):
 			else:
 				print('Abort.')
 				sys.exit(1)
-			logger.info(' :: Done')
 		###################
 		# cookbook        #
 		###################
@@ -94,7 +93,7 @@ class Cli(object):
 			manager = RecipesManager()
 			recipes = manager.list()
 			if not recipes:
-				logger.info(' :: No recipes learned')
+				logger.info(' :: No recipe learned')
 				sys.exit(1)
 			logger.info(' :: Recipes')
 			for recipe in recipes:

@@ -51,6 +51,7 @@ def unbundle(recipe, dst):
 		# Folders
 		if "__app__" in s:
 			os.rename(os.path.join(r, "__app__"), os.path.join(r, env['name']))
+	for r,s,f in os.walk(dst):
 		# Files
 		if "__app__" in f:
 			os.rename(os.path.join(r, "__app__", os.path.join(r, env['name'])))
