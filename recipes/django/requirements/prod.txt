@@ -1,2 +1,0 @@
--r common.txt
-gunicorn==0.14.6
