@@ -30,7 +30,7 @@ can easily learn a basic recipe like that:
 
 ::
 
-    sushi learn http+https://github.com/Socketubs/Sushi/raw/master/recipes/basic.tar.gz
+    sushi learn http+https://github.com/Socketubs/Sushi-recipes/raw/master/basic.tar.gz
      :: Learn given recipe
         -> Download file
         -> Clean
@@ -68,7 +68,7 @@ structure but with ``Jinja2`` code inside your files.
 How to
 ~~~~~~
 
-This is a tree sample of my `advanced <https://github.com/Socketubs/Sushi/tree/master/recipes/advanced>`_ recipe:
+This is a tree sample of my `advanced <https://github.com/Socketubs/Sushi-recipes/tree/master/advanced>`_ recipe:
 
 ::
 
@@ -85,7 +85,7 @@ This is a tree sample of my `advanced <https://github.com/Socketubs/Sushi/tree/m
     │   └── __app__
     └── setup.py
 
-Take a quicklook of this `recipes <https://github.com/Socketubs/Sushi/tree/master/recipes/advanced>`_ files.
+Take a quicklook of this `recipes <https://github.com/Socketubs/Sushi-recipes/tree/master/advanced>`_ files.
 
 There is just one keyword to know for filename: ``__app__`` will be
 replace by your formatted module name.
@@ -161,7 +161,7 @@ helper users to set variables in their configuration file.
 Examples
 ~~~~~~~~
 
-There is one sushi recipe for helper that you can found `here <https://github.com/Socketubs/Sushi/raw/master/recipes/helper.tar.gz>`_.
+There is one sushi recipe for helper that you can found `here <https://github.com/Socketubs/Sushi-recipes/raw/master/helper.tar.gz>`_.
 
 You can find two examples on Github.
 
