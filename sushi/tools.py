@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+from sushi.core import logger
 from jinja2 import Template
 
 def render(recipe, **kwargs):
@@ -28,5 +29,5 @@ def confirm(prompt=None, resp=False):
 			else:
 				return False
 	except KeyboardInterrupt:
-		stream_logger.info('\nAbort.')
+		logger.info('\nAbort.')
 		sys.exit(1)

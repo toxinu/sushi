@@ -21,6 +21,11 @@ Options:
   --recipe=<name>     Select recipe
   -h --help           Show help
   -v --version        Show version
+
+Examples:
+  sushi learn basic.tar.gz
+  sushi learn http+https://github.com/Socketubs/Sushi/raw/master/recipes/django.tar.gz
+  sushi craft hellodjango --recipe django
 """
 
 if __name__ == '__main__':
