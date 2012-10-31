@@ -1,7 +1,11 @@
 Sushi
 =====
 
-Sushi is Python package builder. Enough to create same package structure everytime. Create custom recipes for Flask, Django, etc...
+Sushi is application package builder. Enough to create same package structure every time. Create custom recipes for Flask, Django, etc...
+
+Sushi work like a package manager, Homebrew for example.  
+You have to add a least one cookbook to your in order to have some recipes available.  
+And of course you can very easily create your own cookbook cause they are __Github`` repositories.
 
 - Deploy the same everytime
 - Make specific recipe for Flask, Django, ...
@@ -30,26 +34,48 @@ can easily learn a basic recipe like that:
 
 ::
 
-    sushi learn http+https://github.com/Socketubs/Sushi-recipes/raw/master/basic.tar.gz
-     :: Learn given recipe
-        -> Download file
-        -> Clean
-    :: Done
+    Sushi » sushi cookbook-add socketubs/sushi-recipes
+    ==> Add socketubs/sushi-recipes cookbook
+    Cloning into 'socketubs/recipes'...
+    remote: Counting objects: 126, done.
+    remote: Compressing objects: 100% (84/84), done.
+    remote: Total 126 (delta 46), reused 108 (delta 28)
+    Receiving objects: 100% (126/126), 44.95 KiB, done.
+    Resolving deltas: 100% (46/46), done.
+    ==> Done
 
-First sushi
+First recipe
 ~~~~~~~~~~~
+
+List all recipes available on my cookbook:
 
 ::
 
-    sushi craft My-Package 
-     :: Craft your project
-        -> Recipe: advanced
-     :: Call helpers
-        -> license
-        -> git
-    Initialized empty Git repository in /Users/socketubs/My-Package/.git/
-        -> virtualenv
-     :: Done
+    Sushi » sushi all
+    ==> Recipes available
+    socketubs/recipes/advanced
+    socketubs/recipes/basic
+    socketubs/recipes/django
+    socketubs/recipes/flask
+    socketubs/recipes/helper
+
+And learn the ``basic`` one for example.
+
+::
+
+    Sushi » sushi learn basic
+    ==> Learn given recipe
+    ==> Done
+
+Deploy it !
+
+:: 
+
+    Tests » sushi craft MyApp --recipe=basic
+    ==> Craft your project
+      => Recipe: basic
+    ==> Call helpers
+    ==> Done
 
 Configuration
 -------------
@@ -62,7 +88,9 @@ Create your own recipe
 Description
 ~~~~~~~~~~~
 
-Recipes are simple ``.tar.gz`` archives with a basic python package
+If you want to create your own recipe, you have to create a pull request on my cookbook or create your own cookbook on __Github__.  
+
+Recipes are simple ``folder`` archives with a basic
 structure but with ``Jinja2`` code inside your files.
 
 How to
@@ -85,7 +113,7 @@ This is a tree sample of my `advanced <https://github.com/Socketubs/Sushi-recipe
     │   └── __app__
     └── setup.py
 
-Take a quicklook of this `recipes <https://github.com/Socketubs/Sushi-recipes/tree/master/advanced>`_ files.
+All files will be parsed by __Jinja2__ and all tags listed below will be replaced.
 
 There is just one keyword to know for filename: ``__app__`` will be
 replace by your formatted module name.
@@ -113,9 +141,7 @@ Keyword                Value
 And every values you can add to your configuration file under
 ``settings`` section.
 
-By the way, Sushi use `Jinja2 <http://jinja.pocoo.org>`_ for rendering.
-
-Create your own helpers
+Create your own helpers [REWRITE]
 -----------------------
 
 Description
