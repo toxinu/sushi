@@ -89,7 +89,10 @@ class RecipesManager(object):
 		if not os.path.exists(dst_repo):
 			os.makedirs(dst_repo)
 		
-		os.symlink(src_recipe, dst_recipe)
+		try:
+			os.symlink(src_recipe, dst_recipe)
+		except OSError:
+			raise RecipeAlreadyLearn('Recipe %s already learned' % recipe)
 
 	def delete(self, name):
 		recipe = self.name_handler(name)

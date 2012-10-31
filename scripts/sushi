@@ -11,8 +11,8 @@ doc = """Sushi, a application packager cookchef.
 
 Usage:
   sushi craft <path> [--recipe=<name>]
-  sushi learn <name>
-  sushi forget <name>
+  sushi learn <name>...
+  sushi forget <name>...
   sushi list
   sushi all
   sushi upgrade
@@ -30,6 +30,6 @@ Options:
 """
 
 if __name__ == '__main__':
-	args = docopt(doc, version=sushi.__version__)
-	cli = Cli(**args)
-	cli.start()
+  args = docopt(doc, version=sushi.__version__)
+  cli = Cli(**args)
+  cli.start()

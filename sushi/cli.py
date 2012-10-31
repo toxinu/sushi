@@ -24,21 +24,6 @@ class Cli(object):
 		logger.disabled = False
 	
 	def start(self):
-
-		###################
-		# starter         #
-		###################
-#		starter = Starter()
-#		if starter.check():
-#			if confirm():
-#				try:
-#					starter.run()
-#				except Exception as err:
-#					logger.info(err)
-#					sys.exit(1)
-#			else:
-#				print('Abort.')
-
 		###################
 		# craft           #
 		###################
@@ -52,7 +37,7 @@ class Cli(object):
 			try:
 				unbundle(recipe, path)
 			except Exception as err:
-				logger.info('Error: %s' % err)
+				logger.info('Error: %s (%s)' % (err, recipe))
 				sys.exit(1)
 			logger.info('==> Call helpers')
 			run_helpers(recipe, path)
@@ -61,12 +46,13 @@ class Cli(object):
 		# learn           #
 		###################
 		elif self.args.get('learn', False):
-			path = self.args.get('<name>')
-			logger.info('==> Learn given recipe')
+			recipes = self.args.get('<name>')
 			manager = RecipesManager()
 			try:
-				manager.add(path)
-			except Exception as err:
+				for recipe in recipes:
+					logger.info('==> Learn %s' % recipe)
+					manager.add(recipe)
+			except RecipeAlreadyLearn as err:
 				logger.error('Error: %s' % err)
 				sys.exit(1)
 			logger.info('==> Done')
@@ -74,18 +60,15 @@ class Cli(object):
 		# forget          #
 		###################
 		elif self.args.get('forget', False):
-			name = self.args.get('<name>')
-			logger.info('==> Forget %s recipe' % name)
-			if confirm():
-				manager = RecipesManager()
-				try:
-					manager.delete(name)
-					logger.info('==> Done')
-				except Exception as err:
-					logger.error('Error: %s' % err)
-					sys.exit(1)
-			else:
-				print('Abort.')
+			recipes = self.args.get('<name>')
+			manager = RecipesManager()
+			try:
+				for recipe in recipes:
+					logger.info('==> Forget %s' % recipe)
+					manager.delete(recipe)
+				logger.info('==> Done')
+			except Exception as err:
+				logger.error('Error: %s' % err)
 				sys.exit(1)
 		###################
 		# list            #

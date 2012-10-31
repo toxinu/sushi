@@ -13,12 +13,16 @@ class CookbookError(CookbookException):
 # RecipesManagerException
 class RecipesManagerException(RuntimeError):
 	""" RecipesManager Error """
-
-class RecipesManagerError(RecipesManagerException):
 	def __init__(self, value):
 		self.parameter = value
 	def __str__(self):
 		return repr(self.parameter)
+
+class RecipesManagerError(RecipesManagerException):
+	""" Generic Exception """
+
+class RecipeAlreadyLearn(RecipesManagerException):
+	""" Recipe already learned """
 
 # Unbundler
 class UnbundlerException(RuntimeError):
