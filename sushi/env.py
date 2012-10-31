@@ -18,7 +18,7 @@ def get_env(name):
 			'license_content': licenses[conf.get('settings', 'license')]['url'],
 			'username': getpass.getuser(),
 			'module': name.lower().replace('-', '_'),				
-			'name': name,
+			'app': name,
 			'year': now.year,
 			'day': now.day,
 			'month': now.month,
