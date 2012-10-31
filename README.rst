@@ -4,8 +4,10 @@ Sushi
 Sushi is application package builder. Enough to create same package structure every time. Create custom recipes for Flask, Django, etc...
 
 Sushi work like a package manager, Homebrew for example.  
-You have to add a least one cookbook to your in order to have some recipes available.  
-And of course you can very easily create your own cookbook cause they are __Github`` repositories.
+You have to add a least one cookbook to your in order to have some recipes available.
+
+
+And of course you can very easily create your own cookbook cause they are __Github__ repositories.
 
 - Deploy the same everytime
 - Make specific recipe for Flask, Django, ...
@@ -90,6 +92,7 @@ Description
 
 If you want to create your own recipe, you have to create a pull request on my cookbook or create your own cookbook on __Github__.  
 
+
 Recipes are simple ``folder`` archives with a basic
 structure but with ``Jinja2`` code inside your files.
 
@@ -115,8 +118,10 @@ This is a tree sample of my `advanced <https://github.com/Socketubs/Sushi-recipe
 
 All files will be parsed by __Jinja2__ and all tags listed below will be replaced.
 
+
 There is just one keyword to know for filename: ``__app__`` will be
 replace by your formatted module name.
+
 
 And for file rendering:
 
