@@ -52,11 +52,11 @@ def unbundle(recipe, dst):
 	for r,s,f in os.walk(dst):
 		# Folders
 		if "__app__" in s:
-			os.rename(os.path.join(r, "__app__"), os.path.join(r, env['name'].lower()))
+			os.rename(os.path.join(r, "__app__"), os.path.join(r, env['app'].lower()))
 	for r,s,f in os.walk(dst):
 		# Files
 		if "__app__" in f:
-			os.rename(os.path.join(r, "__app__"), os.path.join(r, env['name'].lower()))
+			os.rename(os.path.join(r, "__app__"), os.path.join(r, env['app'].lower()))
 
 def run_helpers(recipe, dst):
 	for helper in conf.get('settings', 'helpers').split():

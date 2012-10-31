@@ -7,13 +7,18 @@ import sushi
 from docopt import docopt
 from sushi.cli import Cli
 
-doc = """Sushi, a special Python package cookchef.
+doc = """Sushi, a application packager cookchef.
 
 Usage:
   sushi craft <path> [--recipe=<name>]
-  sushi learn <path>
+  sushi learn <name>
   sushi forget <name>
+  sushi list
+  sushi all
+  sushi upgrade
   sushi cookbook
+  sushi cookbook-add <name>
+  sushi cookbook-del <name>
   sushi -h | --help
   sushi -v | --version
 
@@ -22,10 +27,6 @@ Options:
   -h --help           Show help
   -v --version        Show version
 
-Examples:
-  sushi learn basic.tar.gz
-  sushi learn http+https://github.com/Socketubs/Sushi/raw/master/recipes/django.tar.gz
-  sushi craft hellodjango --recipe django
 """
 
 if __name__ == '__main__':

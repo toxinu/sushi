@@ -1,5 +1,15 @@
 # coding: utf-8
 
+# CookbookException
+class CookbookException(RuntimeError):
+	""" Cookbook Error """
+
+class CookbookError(CookbookException):
+	def __init__(self, value):
+		self.parameter = value
+	def __str__(self):
+		return repr(self.parameter)
+
 # RecipesManagerException
 class RecipesManagerException(RuntimeError):
 	""" RecipesManager Error """

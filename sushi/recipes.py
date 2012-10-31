@@ -10,6 +10,9 @@ import tempfile
 
 from sushi.core import conf
 from sushi.core import logger
+
+from sushi.cookbook import Cookbook
+
 from sushi.exceptions import *
 
 
@@ -17,53 +20,90 @@ class RecipesManager(object):
 	def __init__(self):
 		pass
 
+	def name_handler(self, name):
+		cb = Cookbook()
+
+		if '/' in name:
+			if len(name.split('/')) < 3:
+				raise RecipesManagerException('Recipe name incorrect (socketubs/recipes/basic)')
+			recipe = name.split('/')[-1].lower()
+			user = name.split('/')[0].lower()
+			cookbook_name = name.split('/')[1].lower()
+			cookbook = '%s/%s' % (user, cookbook_name)
+
+			if not recipe in cb.get_recipes(cookbook):
+				raise RecipesManagerException('Not recipe found')
+			recipe = '%s/%s' % (cookbook, recipe)
+		else:
+			recipe = name
+			results = []
+
+			for cookbook in cb.list():
+				if recipe in cb.get_recipes(cookbook):
+					results.append('%s/%s' % (cookbook, recipe))
+
+			if not results:
+				raise RecipesManagerException('Not recipe found')
+
+			if len(results) > 1:
+				founds = '\n'.join(results)
+				raise RecipesManagerException('Many results found, please give me cookbook.\n\n%s\n' % founds)
+			recipe = results[0]
+
+		return recipe
+
+	def list_available(self):
+		cb = Cookbook()
+		res = []
+		root = conf.get('paths', 'sushi_cookbooks')
+		for user in os.listdir(root):
+			for cookbook in os.listdir('%s/%s' % (root, user)):
+				for recipe in os.listdir('%s/%s/%s' % (root, user, cookbook)):
+					if recipe != '.git':
+						res.append('%s/%s/%s' % (user, cookbook, recipe))
+		return res
+
 	def list(self):
-		return os.listdir(conf.get('paths', 'sushi_recipes'))
+		root = conf.get('paths', 'sushi_recipes')
+		res = []
+		for user in os.listdir(root):
+			for cookbook in os.listdir('%s/%s' % (root, user)):
+				for recipe in os.listdir('%s/%s/%s' % (root, user, cookbook)):
+					res.append('%s/%s/%s' % (user, cookbook, recipe))
+		return res
 
-	def add(self, path):
-		src = path
-		dst = conf.get('paths', 'sushi_recipes')
-		http_handler = False
-		file_handler = False
+	def add(self, name):
+		recipe = self.name_handler(name)
 
-		# Http handler
-		if src[:5] == 'http+':
-			http_handler = True
-			url = src[5:]
-			f = tempfile.NamedTemporaryFile(delete=False)
-			src = f.name
-			logger.info('    -> Download file')
-			f = open(src, 'w')
-			r = requests.get(url)
-			r.raise_for_status()
-			data = r.content
-			f.write(data)
-			f.close()
-		else:
-			file_handler = True
-			
-		# File
-		if not os.path.isfile(src):
-			raise RecipesManagerException('Recipe is not gzipped tar file')
+		src_repo = '%s/%s' % (conf.get('paths', 'sushi_cookbooks'), '/'.join(recipe.split('/')[:-1]))
+		dst_repo = '%s/%s' % (conf.get('paths', 'sushi_recipes'), '/'.join(recipe.split('/')[:-1]))
+		src_recipe = '%s/%s' % (src_repo, recipe.split('/')[-1])
+		dst_recipe = '%s/%s' % (dst_repo, recipe.split('/')[-1])
 
-		# Open tarfile
-		if tarfile.is_tarfile(src):
-			tar = tarfile.open(src, 'r:gz')
-			tar.extractall(dst)
-		else:
-			raise RecipesManagerException('Recipe is not gzipped tar file')
+		# recipe: socketubs/recipes/django
+		# src_repo: /Users/socketubs/.sushi/cookbooks/socketubs-recipes
+		# dst_repo: /Users/socketubs/.sushi/recipes/socketubs-recipes
+		# src_recipe: src_repo + /django
+		# dst_recipe: dst_repo _ /django
 
-		if http_handler:
-			logger.info('    -> Clean')
-			os.remove(src)
+		if not os.path.exists(dst_repo):
+			os.makedirs(dst_repo)
+		
+		os.symlink(src_recipe, dst_recipe)
 
 	def delete(self, name):
-		if name not in self.list():
-			raise RecipesManagerException('Recipe %s not installed' % name)
-		dst = os.path.join(conf.get('paths', 'sushi_recipes'), name)
-		shutil.rmtree(dst)
+		recipe = self.name_handler(name)
+
+		dst_user = '%s/%s' % (conf.get('paths', 'sushi_recipes'), recipe.split('/')[0])
+		dst_repo = '%s/%s' % (conf.get('paths', 'sushi_recipes'), '/'.join(recipe.split('/')[:-1]))
+		dst_recipe = '%s/%s' % (dst_repo, recipe.split('/')[-1])
+
+		os.remove(dst_recipe)
+		if not os.listdir(dst_repo):
+			shutil.rmtree(dst_repo)
+			if not os.listdir(dst_user):
+				shutil.rmtree(dst_user)
 
 	def get(self, name):
-		if name not in self.list():
-			raise RecipesManagerException('Recipe %s not available' % name)
-		return os.path.join(conf.get('paths', 'sushi_recipes'), name)
+		recipe = self.name_handler(name)
+		return '%s/%s' % (conf.get('paths', 'sushi_recipes'), recipe)

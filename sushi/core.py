@@ -5,7 +5,4 @@ import os
 from sushi.logger import logger
 from sushi.conf import get_conf
 
-###################
-# conf            #
-###################
 conf = get_conf()

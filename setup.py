@@ -3,6 +3,7 @@
 
 import os
 import sys
+import re
 
 try:
 	from setuptools import setup
@@ -36,13 +37,10 @@ setup(
 	keywords="sushi package python linux",
 	packages = ['sushi'],
 	scripts=['scripts/sushi'],
-	install_requires=[	'jinja2==2.6',
-						'docopt==0.5.0',
+	install_requires=[	'jinja2',
+						'docopt',
 						'requests',
-						'sushi-git',
-						'sushi-license'],
-	dependency_links = ['https://github.com/Socketubs/Sushi-git/tarball/master#egg=sushi-git',
-						'https://github.com/Socketubs/Sushi-license/tarball/master#egg=sushi-license'],
+                        'gitpython'],
 	classifiers=(
 		'Intended Audience :: Developers',
 		'Natural Language :: English',

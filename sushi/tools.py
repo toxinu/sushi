@@ -1,5 +1,5 @@
-#!/usr/bin/env python
 # coding: utf-8
+import sys
 
 from sushi.core import logger
 from jinja2 import Template

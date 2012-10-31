@@ -4,7 +4,6 @@
 import getpass
 import datetime
 
-
 from sushi.core import conf
 
 from licenses import Licenses
@@ -14,10 +13,7 @@ def get_env(name):
 	now = datetime.datetime.now()
 	extras = ['firstname', 'lastname', 'email']
 
-	d = {	'license':	conf.get('settings', 'license'),
-			'license_content': licenses[conf.get('settings', 'license')]['url'],
-			'username': getpass.getuser(),
-			'module': name.lower().replace('-', '_'),				
+	d = {	'username': getpass.getuser(),
 			'app': name,
 			'year': now.year,
 			'day': now.day,

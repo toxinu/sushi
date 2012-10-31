@@ -10,10 +10,8 @@ from sushi.core import logger
 default_conf = """[settings]
 recipe   = basic
 license  = agpl-v3
-ignore   = .DS_Store
 
-# git helper is also available
-helpers  = license"""
+helpers  = """
 
 def get_conf():
 	# Create paths
@@ -21,11 +19,13 @@ def get_conf():
 	sushi_path = os.path.join(user_home, '.sushi')
 	sushi_conf = os.path.join(sushi_path, 'sushi.conf')
 	sushi_recipes = os.path.join(sushi_path, 'recipes')
+	sushi_cookbooks = os.path.join(sushi_path, 'cookbooks')
 
 	if not os.path.exists(sushi_path):
 		logger.info('Create sushi conf folder')
 		os.makedirs(sushi_path)
 		os.makedirs(sushi_recipes)
+		os.makedirs(sushi_cookbooks)
 		with open(sushi_conf, 'w') as f:
 			f.write(default_conf)
 
@@ -37,6 +37,7 @@ def get_conf():
 	parser.set('paths', 'sushi', sushi_path)
 	parser.set('paths', 'sushi_conf', sushi_conf)
 	parser.set('paths', 'sushi_recipes', sushi_recipes)
+	parser.set('paths', 'sushi_cookbooks', sushi_cookbooks)
 
 	# Defaults
 	if not parser.has_section('settings'):
@@ -45,9 +46,7 @@ def get_conf():
 		parser.set('settings', 'license', 'agpl-v3')
 	if not parser.has_option('settings', 'recipe'):
 		parser.set('settings', 'recipe', 'default')
-	if not parser.has_option('settings', 'ignore'):
-		parser.set('settings', 'ignore', '.DS_Store')
 	if not parser.has_option('settings', 'helpers'):
-		parser.set('settings', 'helperes', '')
+		parser.set('settings', 'helpers', '')
 
 	return parser
