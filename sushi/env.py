@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 import getpass
 import datetime
@@ -9,25 +9,25 @@ from sushi.core import conf
 from licenses import Licenses
 
 def get_env(name):
-	licenses = Licenses()
-	now = datetime.datetime.now()
-	extras = ['firstname', 'lastname', 'email']
+    licenses = Licenses()
+    now = datetime.datetime.now()
+    extras = [u'firstname', u'lastname', u'email']
 
-	d = {	'username': getpass.getuser(),
-			'app': name,
-			'year': now.year,
-			'day': now.day,
-			'month': now.month,
-			'hour': now.hour,
-			'minute': now.minute,
-			'second': now.second,
-			'date': now.strftime("%Y-%m-%d %H:%M")
-	}
+    d = {   u'username': unicode(getpass.getuser()),
+            u'app': unicode(name),
+            u'year': unicode(now.year),
+            u'day': unicode(now.day),
+            u'month': unicode(now.month),
+            u'hour': unicode(now.hour),
+            u'minute': unicode(now.minute),
+            u'second': unicode(now.second),
+            u'date': unicode(now.strftime("%Y-%m-%d %H:%M"))
+    }
 
-	for extra in extras:
-		if conf.has_option('settings', extra):
-			d[extra] = conf.get('settings', extra)
-		else:
-			d[extra] = '## Set %s' % extra
+    for extra in extras:
+        if conf.has_option('settings', extra):
+            d[extra] = conf.get('settings', extra).decode('utf-8')
+        else:
+            d[extra] = '## Set %s' % extra
 
-	return d
+    return d

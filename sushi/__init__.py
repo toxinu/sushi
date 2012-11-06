@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 __title__ = 'sushi'
 __version__ = '0.2.8'
