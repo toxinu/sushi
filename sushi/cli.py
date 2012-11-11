@@ -120,7 +120,7 @@ class Cli(object):
         # cookbook-add    #
         ###################
         elif self.args.get('cookbook-add', False):
-            repo_name = self.args.get('<name>')
+            repo_name = self.args.get('<name>')[0]
             logger.info('==> Add %s cookbook' % repo_name)
             cb = Cookbook()
             try:
@@ -134,7 +134,7 @@ class Cli(object):
         # cookbook-del    #
         ###################
         elif self.args.get('cookbook-del', False):
-            repo_name = self.args.get('<name>')
+            repo_name = self.args.get('<name>')[0]
             logger.info('==> Delete %s cookbook' % repo_name)
             cb = Cookbook()
             if confirm():
