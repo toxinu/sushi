@@ -28,8 +28,7 @@ setup(
 	name='sushi',
 	version=get_version(),
 	description='Python package bundler',
-	long_description=	open('README.rst').read() + '\n\n' +
-						open('HISTORY.rst').read(),
+	long_description=open('README.rst').read() + '\n\n' + open('HISTORY.rst').read(),
 	license=open("LICENSE").read(),
 	author="Geoffrey Lehee",
 	author_email="geoffrey@lehee.name",
@@ -37,10 +36,7 @@ setup(
 	keywords="sushi package python linux",
 	packages = ['sushi'],
 	scripts=['scripts/sushi'],
-	install_requires=[	'jinja2',
-						'docopt',
-						'requests',
-                        'gitpython'],
+	install_requires=['jinja2','docopt','requests'],
 	classifiers=(
 		'Intended Audience :: Developers',
 		'Natural Language :: English',
