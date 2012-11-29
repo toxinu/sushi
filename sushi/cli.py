@@ -16,8 +16,6 @@ from sushi.tools import confirm
 
 from sushi.exceptions import *
 
-from licenses import Licenses
-
 class Cli(object):
     def __init__(self, *args, **kwargs):
         self.args = kwargs

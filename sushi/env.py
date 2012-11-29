@@ -6,10 +6,7 @@ import datetime
 
 from sushi.core import conf
 
-from licenses import Licenses
-
 def get_env(name):
-    licenses = Licenses()
     now = datetime.datetime.now()
     extras = [u'firstname', u'lastname', u'email']
 
