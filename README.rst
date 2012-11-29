@@ -47,7 +47,7 @@ can easily learn a basic recipe like that:
     ==> Done
 
 First recipe
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
 List all recipes available on my cookbook:
 
@@ -147,7 +147,7 @@ And every values you can add to your configuration file under
 ``settings`` section.
 
 Create your own helpers [REWRITE]
------------------------
+---------------------------------
 
 Description
 ~~~~~~~~~~~
