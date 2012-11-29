@@ -27,6 +27,10 @@ Options:
   -h --help           Show help
   -v --version        Show version
 
+Examples:
+  sushi cookbook-add socketubs/sushi-recipes
+  sushi learn basic
+  sushi craft MyApp --recipe=basic
 """
 
 if __name__ == '__main__':
