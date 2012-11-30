@@ -28,9 +28,13 @@ def unbundle(recipe, dst):
     # Copy every dir #
     ##################
     def ignore(folder, names):
-        return [n for n in names
-            if not os.path.isdir(os.path.join(folder, n)) and
-                n in conf.get('settings', 'ignore').split()]
+        _res = []
+        for n in names:
+            if not os.path.isdir(os.path.join(folder, n)):
+                if conf.has_option('settings', 'ignore'):
+                    if n in conf.get('settings', 'ignore').split():
+                        _res.append(n)
+        return _res
 
     shutil.copytree(recipe_dir, dst, ignore=ignore)
 
@@ -39,8 +43,9 @@ def unbundle(recipe, dst):
     ############################################
     for path, dirs, files in os.walk(recipe_dir):
         for f in files:
-            if f in conf.get('settings', 'ignore').split():
-                continue
+            if conf.has_option('settings', 'ignore'):
+                if f in conf.get('settings', 'ignore').split():
+                    continue
             fdst = os.path.join(path.replace(recipe_dir, dst), f)
             try:
                 with codecs.open(fdst, mode='w', encoding='utf-8') as r:
