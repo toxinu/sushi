@@ -1,22 +1,23 @@
 Sushi
 =====
 
-Sushi is application package builder. Enough to create same package structure every time. Create custom recipes for Flask, Django, etc...
+Sushi is package builder based on template. Enough to create same package structure every time. Create custom recipes for Flask, Django or every BoilerPlate you want!
 
-Sushi work like a package manager, Homebrew for example.  
-You have to add a least one cookbook to your in order to have some recipes available.
-
+Sushi can learn/unlearn/upgrade every recipes you want. Like package manager for recipes.
+You have to give every cookbook (repository) you want to Sushi and all it's recipes will be available to you.
 
 And of course you can very easily create your own cookbook cause they are __Github__ repositories.
 
+Features
+--------
+
+- Create template for everything based on Jinja2
 - Deploy the same everytime
 - Make specific recipe for Flask, Django, ...
 - Use helpers to not waste time
-- Auto ``virtualenv`` for best dev
 - Auto ``git init`` your package
-- And more !
 
-Sushi support helper(extensions) and there are easy to create. There are already some extension, like ``git``, ``license``.
+Sushi support helper(extensions) and there are easy to create. There are already some extension, like ``git``.
 
 Quick start
 -----------
@@ -31,8 +32,8 @@ Installation
 Meet the cookchef
 ~~~~~~~~~~~~~~~~~
 
-If it's the first time your run Sushi, your cookbook is certainly empty. You
-can easily learn a basic recipe like that:
+If it's the first time your run Sushi, your cookbook must be empty.
+You can add my personnal cookbook to your in order to discover sushi:
 
 ::
 
@@ -99,7 +100,7 @@ structure but with ``Jinja2`` code inside your files.
 How to
 ~~~~~~
 
-This is a tree sample of my `advanced <https://github.com/Socketubs/Sushi-recipes/tree/master/advanced>`_ recipe:
+This is a tree sample of my `advanced <https://github.com/socketubs/sushi-recipes/tree/master/advanced>`_ recipe:
 
 ::
 
@@ -195,8 +196,7 @@ There is one sushi recipe for helper that you can found `here <https://github.co
 
 You can find two examples on Github.
 
--  `Sushi-git <https://github.com/Socketubs/Sushi-git>`_
--  `Sushi-license <https://github.com/Socketubs/Sushi-license>`_
+-  `sushi-git <https://github.com/socketubs/sushi-git>`_
 
 License
 -------
@@ -206,4 +206,4 @@ License is `AGPL3`_. See `LICENSE`_.
 .. _recipes: http://sushi.socketubs.net/recipes
 .. _helpers: http://sushi.socketubs.net/helpers
 .. _AGPL3: http://www.gnu.org/licenses/agpl.html
-.. _LICENSE: https://raw.github.com/Socketubs/Sushi/master/LICENSE
+.. _LICENSE: https://raw.github.com/socketubs/sushi/master/LICENSE
