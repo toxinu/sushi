@@ -6,7 +6,7 @@ Sushi is package builder based on template. Enough to create same package struct
 Sushi can learn/unlearn/upgrade every recipes you want. Like package manager for recipes.
 You have to give every cookbook (repository) you want to Sushi and all it's recipes will be available to you.
 
-And of course you can very easily create your own cookbook cause they are __Github__ repositories.
+And of course you can very easily create your own cookbook cause they are *Github* repositories.
 
 Features
 --------
@@ -14,7 +14,7 @@ Features
 - Create template for everything based on Jinja2
 - Deploy the same everytime
 - Make specific recipe for Flask, Django, ...
-- Use helpers to not waste time
+- Use helpers (plugins) to not waste time
 - Auto ``git init`` your package
 
 Sushi support helper(extensions) and there are easy to create. There are already some extension, like ``git``.
@@ -189,12 +189,10 @@ Your helper can use ``sushi.core`` api like that:
 And of course ``conf`` object is ``ConfigParser``, so you can ask your
 helper users to set variables in their configuration file.
 
-Examples
-~~~~~~~~
+Example
+~~~~~~~
 
-There is one sushi recipe for helper that you can found `here <https://github.com/Socketubs/Sushi-recipes/raw/master/helper.tar.gz>`_.
-
-You can find two examples on Github.
+You can find an example on Github.
 
 -  `sushi-git <https://github.com/socketubs/sushi-git>`_
 
