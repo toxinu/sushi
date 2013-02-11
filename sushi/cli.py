@@ -20,7 +20,7 @@ class Cli(object):
     def __init__(self, *args, **kwargs):
         self.args = kwargs
         logger.disabled = False
-    
+
     def start(self):
         ###################
         # craft           #
@@ -35,7 +35,7 @@ class Cli(object):
             try:
                 unbundle(recipe, path)
             except Exception as err:
-                logger.info('Error: %s (%s)' % (err, recipe))
+                logger.info('!! %s (%s)' % (err.message, recipe))
                 sys.exit(1)
             logger.info('==> Call helpers')
             run_helpers(recipe, path)
@@ -51,7 +51,10 @@ class Cli(object):
                     logger.info('==> Learn %s' % recipe)
                     manager.add(recipe)
             except RecipeAlreadyLearn as err:
-                logger.error('Error: %s' % err)
+                logger.error('!! %s' % err.message)
+                sys.exit(1)
+            except RecipeUnvailable as err:
+                logger.error('!! %s' % err.message)
                 sys.exit(1)
             logger.info('==> Done')
         ###################
@@ -66,11 +69,11 @@ class Cli(object):
                     manager.delete(recipe)
                 logger.info('==> Done')
             except Exception as err:
-                logger.error('Error: %s' % err)
+                logger.error('!! %s' % err.message)
                 sys.exit(1)
         ###################
         # list            #
-        ################### 
+        ###################
         elif self.args.get('list', False):
             manager = RecipesManager()
             recipes = manager.list()
@@ -83,7 +86,7 @@ class Cli(object):
             sys.exit(0)
         ###################
         # all             #
-        ################### 
+        ###################
         elif self.args.get('all', False):
             manager = RecipesManager()
             recipes = manager.list_available()
@@ -96,7 +99,7 @@ class Cli(object):
             sys.exit(0)
         ###################
         # upgrade         #
-        ################### 
+        ###################
         elif self.args.get('upgrade', False):
             cb = Cookbook()
             logger.info('==> Update cookbooks')
@@ -125,7 +128,7 @@ class Cli(object):
                 cb.add(repo_name)
                 logger.info('==> Done')
             except CookbookException as err:
-                logger.info('Error: %s' % err)
+                logger.info('!! %s' % err.message)
                 sys.exit(1)
             sys.exit(0)
         ###################
@@ -140,7 +143,7 @@ class Cli(object):
                     cb.remove(repo_name)
                     logger.info('==> Done')
                 except CookbookException as err:
-                    logger.info('Error: %s' % err)
+                    logger.info('!! %s' % err.message)
                     sys.exit(1)
             else:
                 print('Abort.')
