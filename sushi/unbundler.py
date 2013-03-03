@@ -19,6 +19,9 @@ def unbundle(recipe, dst):
     manager = RecipesManager()
     recipe_dir = manager.get(recipe)
 
+    if recipe not in manager.list_available():
+        raise UnbundlerException("Don't know this recipe.")
+
     env = get_env(dst)
 
     if os.path.exists(dst):
