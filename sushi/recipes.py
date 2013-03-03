@@ -25,14 +25,14 @@ class RecipesManager(object):
 
         if '/' in name:
             if len(name.split('/')) < 3:
-                raise RecipesManagerException('Recipe name incorrect (socketubs/recipes/basic)')
+                raise RecipeBadNameFormat('Recipe name incorrect (socketubs/recipes/basic)')
             recipe = name.split('/')[-1].lower()
             user = name.split('/')[0].lower()
             cookbook_name = name.split('/')[1].lower()
             cookbook = '%s/%s' % (user, cookbook_name)
 
             if not recipe in cb.get_recipes(cookbook):
-                raise RecipesManagerException('Not recipe found')
+                raise RecipeUnmatched('Not recipe found')
             recipe = '%s/%s' % (cookbook, recipe)
         else:
             recipe = name
@@ -43,11 +43,11 @@ class RecipesManager(object):
                     results.append('%s/%s' % (cookbook, recipe))
 
             if not results:
-                raise RecipesManagerException('Not recipe found')
+                raise RecipeUnvailable('Not recipe found')
 
             if len(results) > 1:
                 founds = '\n'.join(results)
-                raise RecipesManagerException('Many results found, please give me cookbook.\n\n%s\n' % founds)
+                raise RecipeUnmatched('Many results found, please give me cookbook.\n\n%s\n' % founds)
             recipe = results[0]
 
         return recipe
@@ -88,7 +88,7 @@ class RecipesManager(object):
 
         if not os.path.exists(dst_repo):
             os.makedirs(dst_repo)
-        
+
         try:
             os.symlink(os.path.join(src_recipe, 'content'), dst_recipe)
         except OSError:

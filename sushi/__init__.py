@@ -5,6 +5,6 @@ __title__ = 'sushi'
 __version__ = '0.3.3'
 __author__ = 'Geoffrey Lehée'
 __license__ = 'AGPL3'
-__copyright__ = 'Copyright 2012 Geoffrey Lehée'
+__copyright__ = 'Copyright 2013 Geoffrey Lehée'
 
 import core

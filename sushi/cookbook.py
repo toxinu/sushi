@@ -23,7 +23,7 @@ class Cookbook(object):
                     if ignore_errors:
                         logger.info('Error: could not update %s/%s cookbook' % (user, cookbook))
                     else:
-                        raise CookbookException('Could not update %s/%s cookbook' % (user, cookbook))
+                        raise CookbookUpdateFailed('Could not update %s/%s cookbook' % (user, cookbook))
         logger.info('==> Done')
 
     def list(self):
@@ -38,11 +38,11 @@ class Cookbook(object):
         # renamed as socketubs-recipes
 
         if len(repo_name.split('/')) < 2:
-            raise CookbookException('Bad cookbook url (socketubs/sushi-recipes)')
+            raise CookbookBadURL('Bad cookbook url (socketubs/sushi-recipes)')
         if repo_name.split('/')[1].split('-')[0] != 'sushi':
-            raise CookbookException('Bad cookbook url (socketubs/sushi-recipes)')
+            raise CookbookBadURL('Bad cookbook url (socketubs/sushi-recipes)')
 
-        url = "git://github.com/%s.git" % repo_name
+        url = "https://github.com/%s.git" % repo_name
         user = repo_name.split('/')[0].lower()
         repo_name = '-'.join(repo_name.split('/')[1].split('-')[1:]).lower()
 
@@ -51,18 +51,21 @@ class Cookbook(object):
             os.makedirs(user)
         else:
             if repo_name.split('-')[-1] in os.listdir(user):
-                raise CookbookException('Cookbook already added')
-        try:
-            os.system('git clone %s %s/%s' % (url, user, repo_name))
-        except Exception as err:
+                raise CookbookAlreadyExists('Cookbook already added')
+
+        return_code = os.system('git clone %s %s/%s' % (url, user, repo_name))
+        if return_code >= 1:
             if not os.listdir(user):
-                os.remove(user)
-            raise CookbookException('Failed to add this cookbook (%s/%s)\nError: %s' % (user, repo_name, err))
+                shutil.rmtree(user, ignore_errors=True)
+            raise CookbookAddFailed('Failed to add this cookbook (%s/%s)\n!! Return code: %s' % (
+                        user,
+                        repo_name,
+                        return_code))
 
     def remove(self, repo_name):
         path = '%s/%s' % (conf.get('paths', 'sushi_cookbooks'), repo_name)
         if not os.path.exists(path):
-            raise CookbookException('This cookbook not exist')
+            raise CookbookRemoveFailed('This cookbook not exists')
 
         shutil.rmtree(path, ignore_errors=True)
 
@@ -71,6 +74,8 @@ class Cookbook(object):
 
     def get_recipes(self, cookbook_name):
         res = []
+        if not os.path.exists(os.path.join(conf.get('paths', 'sushi_cookbooks'), cookbook_name)):
+            raise CookbookNotFound('This cookbook does not exists')
         for recipe in os.listdir('%s/%s' % (conf.get('paths', 'sushi_cookbooks'), cookbook_name)):
             if recipe != '.git':
                 res.append(recipe)
