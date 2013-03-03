@@ -101,11 +101,14 @@ class RecipesManager(object):
         dst_repo = '%s/%s' % (conf.get('paths', 'sushi_recipes'), '/'.join(recipe.split('/')[:-1]))
         dst_recipe = '%s/%s' % (dst_repo, recipe.split('/')[-1])
 
-        os.remove(dst_recipe)
-        if not os.listdir(dst_repo):
-            shutil.rmtree(dst_repo)
-            if not os.listdir(dst_user):
-                shutil.rmtree(dst_user)
+        try:
+            os.remove(dst_recipe)
+            if not os.listdir(dst_repo):
+                shutil.rmtree(dst_repo)
+                if not os.listdir(dst_user):
+                    shutil.rmtree(dst_user)
+        except:
+            raise RecipeUnmatched("Nothing to forget.")
 
     def get(self, name):
         recipe = self.name_handler(name)
