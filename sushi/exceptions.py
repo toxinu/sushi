@@ -1,18 +1,22 @@
 # -*- coding: utf-8 -*-
 
-# CookbookException
+
 class CookbookException(RuntimeError):
     """ Cookbook Error """
     def __init__(self, value):
         self.message = value
+
     def __str__(self):
         return repr(self.message)
+
 
 class CookbookNotFound(CookbookException):
     """ Cookbook not found """
 
+
 class CookbookAlreadyExists(CookbookException):
     """ Cookbook already exists """
+
 
 class CookbookBadURL(CookbookException):
     """ Cookbook bad URL """

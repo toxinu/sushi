@@ -1,20 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import sys
-import os
 
 from sushi.core import logger
 from sushi.core import conf
 
-from sushi.recipes import RecipesManager
-from sushi.cookbook import Cookbook
-from sushi.unbundler import unbundle
-from sushi.unbundler import run_helpers
-from sushi.starter import Starter
-from sushi.tools import confirm
+from .recipes import RecipesManager
+from .cookbook import Cookbook
+from .unbundler import unbundle
+from .unbundler import run_helpers
+from .tools import confirm
+from .exceptions import *
 
-from sushi.exceptions import *
 
 class Cli(object):
     def __init__(self, *args, **kwargs):
@@ -35,7 +32,10 @@ class Cli(object):
             try:
                 unbundle(recipe, path)
             except Exception as err:
-                logger.info('!! %s (%s)' % (err.message, recipe))
+                if hasattr(err, 'message'):
+                    logger.error('!! %s (%s)' % (err.message, recipe))
+                else:
+                    logger.error('!! %s (%s)' % (err, recipe))
                 sys.exit(1)
             logger.info('==> Call helpers')
             run_helpers(recipe, path)

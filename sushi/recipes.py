@@ -1,19 +1,10 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import os
-import sys
-import tarfile
 import shutil
-import requests
-import tempfile
 
-from sushi.core import conf
-from sushi.core import logger
-
-from sushi.cookbook import Cookbook
-
-from sushi.exceptions import *
+from .core import conf
+from .cookbook import Cookbook
+from .exceptions import *
 
 
 class RecipesManager(object):
@@ -25,7 +16,8 @@ class RecipesManager(object):
 
         if '/' in name:
             if len(name.split('/')) < 3:
-                raise RecipeBadNameFormat('Recipe name incorrect (socketubs/recipes/basic)')
+                raise RecipeBadNameFormat(
+                    'Recipe name incorrect (socketubs/recipes/basic)')
             recipe = name.split('/')[-1].lower()
             user = name.split('/')[0].lower()
             cookbook_name = name.split('/')[1].lower()
@@ -47,13 +39,13 @@ class RecipesManager(object):
 
             if len(results) > 1:
                 founds = '\n'.join(results)
-                raise RecipeUnmatched('Many results found, please give me cookbook.\n\n%s\n' % founds)
+                raise RecipeUnmatched(
+                    'Many results found, please give me cookbook.\n\n%s\n' % founds)
             recipe = results[0]
 
         return recipe
 
     def list_available(self):
-        cb = Cookbook()
         res = []
         root = conf.get('paths', 'sushi_cookbooks')
         for user in os.listdir(root):
@@ -112,4 +104,6 @@ class RecipesManager(object):
 
     def get(self, name):
         recipe = self.name_handler(name)
-        return '%s/%s' % (conf.get('paths', 'sushi_recipes'), recipe)
+        if recipe not in self.list():
+            raise RecipeUnvailable("Recipe not learned")
+        return os.path.join(conf.get('paths', 'sushi_recipes'), recipe)

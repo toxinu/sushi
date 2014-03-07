@@ -1,12 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
 import shutil
 
-from sushi.core import logger
+from .core import logger
+from .core import conf
+from .exceptions import *
 
-from sushi.core import conf
-from sushi.exceptions import *
 
 class Cookbook(object):
     def __init__(self):
@@ -14,22 +13,29 @@ class Cookbook(object):
 
     def upgrade(self, ignore_errors=False):
         for user in os.listdir(conf.get('paths', 'sushi_cookbooks')):
-            for cookbook in os.listdir('%s/%s' % (conf.get('paths', 'sushi_cookbooks'), user)):
-                os.chdir('%s/%s/%s' % (conf.get('paths', 'sushi_cookbooks'), user, cookbook))
+            for cookbook in os.listdir(os.path.join(
+                    conf.get('paths', 'sushi_cookbooks'), user)):
+                os.chdir(os.path.join(
+                    conf.get('paths', 'sushi_cookbooks'), user, cookbook))
                 try:
                     logger.info(' - %s/%s' % (user, cookbook))
                     os.system('git pull')
                 except:
                     if ignore_errors:
-                        logger.info('Error: could not update %s/%s cookbook' % (user, cookbook))
+                        logger.info(
+                            'Error: could not update %s/%s cookbook' % (
+                                user, cookbook))
                     else:
-                        raise CookbookUpdateFailed('Could not update %s/%s cookbook' % (user, cookbook))
+                        raise CookbookUpdateFailed(
+                            'Could not update %s/%s cookbook' % (
+                                user, cookbook))
         logger.info('==> Done')
 
     def list(self):
         res = []
         for user in os.listdir(conf.get('paths', 'sushi_cookbooks')):
-            for cookbook in os.listdir('%s/%s' % (conf.get('paths', 'sushi_cookbooks'), user)):
+            for cookbook in os.listdir(os.path.join(
+                    conf.get('paths', 'sushi_cookbooks'), user)):
                 res.append('%s/%s' % (user, cookbook))
         return res
 
@@ -53,14 +59,14 @@ class Cookbook(object):
             if repo_name.split('-')[-1] in os.listdir(user):
                 raise CookbookAlreadyExists('Cookbook already added')
 
-        return_code = os.system('git clone %s %s/%s' % (url, user, repo_name))
+        return_code = os.system('git clone %s %s' % (
+            url, os.path.join(user, repo_name)))
         if return_code >= 1:
             if not os.listdir(user):
                 shutil.rmtree(user, ignore_errors=True)
-            raise CookbookAddFailed('Failed to add this cookbook (%s/%s)\n!! Return code: %s' % (
-                        user,
-                        repo_name,
-                        return_code))
+            raise CookbookAddFailed(
+                'Failed to add this cookbook (%s)\n!! Return code: %s' % (
+                    os.path.join(user, repo_name), return_code))
 
     def remove(self, repo_name):
         path = '%s/%s' % (conf.get('paths', 'sushi_cookbooks'), repo_name)
@@ -69,14 +75,18 @@ class Cookbook(object):
 
         shutil.rmtree(path, ignore_errors=True)
 
-        if os.path.exists('%s/%s' % (conf.get('paths', 'sushi_recipes'), repo_name)):
-            shutil.rmtree('%s/%s' % (conf.get('paths', 'sushi_recipes'), repo_name), ignore_errors=True)
+        if os.path.exists(os.path.join(conf.get(
+                'paths', 'sushi_recipes'), repo_name)):
+            shutil.rmtree(os.path.join(conf.get(
+                'paths', 'sushi_recipes'), repo_name), ignore_errors=True)
 
     def get_recipes(self, cookbook_name):
         res = []
-        if not os.path.exists(os.path.join(conf.get('paths', 'sushi_cookbooks'), cookbook_name)):
+        if not os.path.exists(os.path.join(conf.get(
+                'paths', 'sushi_cookbooks'), cookbook_name)):
             raise CookbookNotFound('This cookbook does not exists')
-        for recipe in os.listdir('%s/%s' % (conf.get('paths', 'sushi_cookbooks'), cookbook_name)):
+        for recipe in os.listdir(os.path.join(
+                conf.get('paths', 'sushi_cookbooks'), cookbook_name)):
             if recipe != '.git':
                 res.append(recipe)
         return res

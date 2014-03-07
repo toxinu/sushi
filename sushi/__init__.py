@@ -7,4 +7,4 @@ __author__ = 'Geoffrey Lehée'
 __license__ = 'AGPL3'
 __copyright__ = 'Copyright 2013 Geoffrey Lehée'
 
-import core
+from . import core

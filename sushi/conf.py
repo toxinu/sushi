@@ -1,17 +1,20 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import codecs
 import os
+import codecs
 
-from ConfigParser import SafeConfigParser
+try:
+    from ConfigParser import SafeConfigParser
+except ImportError:
+    from configparser import SafeConfigParser
 
-from sushi.core import logger
+from .core import logger
 
 default_conf = """[settings]
 recipe   = basic
 license  = agpl-v3
 
 helpers  = """
+
 
 def get_conf():
     # Create paths

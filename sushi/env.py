@@ -1,25 +1,30 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import sys
 import getpass
 import datetime
 
-from sushi.core import conf
+from .core import conf
+
+if sys.version_info[0] == 3:
+    s = str
+else:
+    s = unicode
+
 
 def get_env(name):
     now = datetime.datetime.now()
     extras = [u'firstname', u'lastname', u'email']
 
-    d = {   u'username': unicode(getpass.getuser()),
-            u'app': unicode(name),
-            u'year': unicode(now.year),
-            u'day': unicode(now.day),
-            u'month': unicode(now.month),
-            u'hour': unicode(now.hour),
-            u'minute': unicode(now.minute),
-            u'second': unicode(now.second),
-            u'date': unicode(now.strftime("%Y-%m-%d %H:%M"))
-    }
+    d = {
+        u'username': s(getpass.getuser()),
+        u'app': s(name),
+        u'year': s(now.year),
+        u'day': s(now.day),
+        u'month': s(now.month),
+        u'hour': s(now.hour),
+        u'minute': s(now.minute),
+        u'second': s(now.second),
+        u'date': s(now.strftime("%Y-%m-%d %H:%M"))}
 
     for extra in extras:
         if conf.has_option('settings', extra):

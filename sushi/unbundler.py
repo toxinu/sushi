@@ -1,18 +1,15 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import os
 import sys
 import shutil
 import codecs
 
-from sushi.core import conf
-from sushi.core import logger
-from sushi.tools import render
-from sushi.env import get_env
-from sushi.recipes import RecipesManager
-
-from sushi.exceptions import *
+from .core import conf
+from .core import logger
+from .tools import render
+from .env import get_env
+from .recipes import RecipesManager
+from .exceptions import *
 
 
 def unbundle(recipe, dst):

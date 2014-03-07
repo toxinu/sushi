@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-import os
-import sushi
-
 from docopt import docopt
 from sushi.cli import Cli
+from sushi import __version__
 
 doc = """Sushi, a application packager cookchef.
 
@@ -34,6 +31,6 @@ Examples:
 """
 
 if __name__ == '__main__':
-  args = docopt(doc, version=sushi.__version__)
-  cli = Cli(**args)
-  cli.start()
+    args = docopt(doc, version=__version__)
+    cli = Cli(**args)
+    cli.start()
