@@ -29,3 +29,4 @@ pip-log.txt
 .DS_Store
 
 virtenv*
+*.swp
